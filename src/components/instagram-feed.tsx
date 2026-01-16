@@ -18,7 +18,7 @@ const FALLBACK_PROFILE = {
 
 // Carregar vídeos dinamicamente de src/assets/videos
 // A chave é o caminho, o valor é a URL final do asset (gerenciada pelo Vite)
-const videoModules = import.meta.glob('../assets/videos/*.mp4', { eager: true, as: 'url' });
+const videoModules = import.meta.glob('../assets/videos/*.mp4', { eager: true, query: '?url', import: 'default' });
 
 // Transformar em array estruturado
 const REELS = Object.entries(videoModules).map(([path, url]) => {
@@ -81,8 +81,8 @@ function InstaCard({ post }: { post: any }) {
 
             {/* OVERLAY LIMPO - APENAS BOTÃO NO HOVER */}
             <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-20">
-                <div className="px-6 py-3 rounded-full text-xs font-bold flex items-center gap-2 transform scale-90 group-hover:scale-100 btn-brand-yellow-effect-two group-hover:btn-brand-yellow-effect:hover">
-                    <Instagram className="w-4 h-4" />
+                <div className="px-6 py-3 rounded-full text-xs font-bold flex items-center gap-2 transform scale-90 group-hover:scale-100 btn-brand-yellow-effect">
+                    <Instagram className="w-6 h-6" />
                     Ver no Instagram
                 </div>
             </div>
@@ -154,9 +154,9 @@ export function InstagramFeed() {
             </div>
 
             {/* HEADER DO PERFIL (Glass & Overlapping) */}
-            <div className="max-w-7xl mx-auto px-6 relative z-20 -mt-24">
+            <div className="max-w-7xl mx-auto px- relative z-20 -mt-24">
                 {profile ? (
-                    <div className="bg-white/60 backdrop-blur-xl p-4 md:p-6 rounded-[2.5rem] shadow-xl shadow-slate-200/50 border border-white/50 max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-700">
+                    <div className="bg-white/60 backdrop-blur-xl p- md:p-6 rounded-[2.5rem] shadow-xl shadow-slate-200/50 border border-white/50 max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-700">
                         <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
                             <div className="flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
                                 <a href={profile.link} target="_blank" rel="noreferrer" className="relative group cursor-pointer hover:scale-105 transition-transform">
@@ -165,10 +165,10 @@ export function InstagramFeed() {
                                 </a>
                                 <div>
                                     <h3 className="text-xl font-bold text-brand-blue flex items-center justify-center md:justify-start gap-1">
-                                        {profile.username}
-                                        <CheckCircle2 className="w-4 h-4 text-blue-500 fill-blue-50" />
+                                        {profile.name}
                                     </h3>
-                                    <p className="text-slate-500 text-sm font-medium">{profile.name}</p>
+                                    <p className="text-slate-500 text-sm font-medium">{profile.username}</p>
+                                    <CheckCircle2 className="w-2 h-2 text-blue-500 fill-blue-50" />
                                 </div>
                             </div>
 
@@ -185,7 +185,7 @@ export function InstagramFeed() {
                                 </div>
                             </div>
 
-                            <a href={profile.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 font-bold rounded-full w-full md:w-auto justify-center btn-brand-yellow-effect">
+                            <a href={profile.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3.5 font-bold rounded-full w-full md:w-auto justify-center btn-brand-yellow-effect">
                                 <Instagram className="w-4 h-4" />
                                 Seguir no Insta
                             </a>

@@ -9,14 +9,8 @@
   --color-whatsapp: #25D366;
   --color-whatsapp-hover: #20BD5A;
   --color-green: #24d665;
-
-  /* Add custom slate-950 if needed or rely on default */
   --color-slate-950: #020617;
-
-  /* Fonts */
   --font-sans: 'Inter', sans-serif;
-
-  /* Border Radius */
   --radius-3xl: 1.5rem;
 }
 
@@ -31,8 +25,9 @@
 }
 
 @layer components {
-
-  /* Efeito Hover "Highlight" (PainPoints/Services) */
+  /* ... (seus outros componentes mantidos iguais) ... */
+  
+  /* Efeito Hover "Highlight" */
   .hover-card-effect {
     @apply transition-all duration-300;
   }
@@ -58,32 +53,44 @@
     box-shadow: 0 14px 35px -10px var(--btn-color);
   }
 
-  /* Efeito Botão Amarelo (Brand) */
+  /* --- AQUI ESTÁ A CORREÇÃO --- */
   .btn-brand-yellow-effect {
-    --btn-color: var(--color-brand-white)/50;
+    /* MUDANÇA: Usamos color-mix para pegar 30% da cor e 70% de transparência */
+    --btn-color: color-mix(in srgb, var(--color-brand-white) 30%, transparent);
+    
     background-color: var(--btn-color);
     color: var(--color-brand-blue);
+    
+    /* Nota: box-shadow também precisa usar a cor diluída se quiser o efeito suave */
     box-shadow: 0 10px 25px -10px var(--btn-color);
     transition: all 0.3s ease-out;
-    border-color: var(--color-brand-yellow);
-    border-width: 1.5px;
-  }
-
-   .btn-brand-yellow-effect-two {
-    --btn-color: var(--color-brand-yellow)/30;
-    background-color: var(--btn-color);
-    color: var(--color-brand-blue);
-    box-shadow: 0 10px 25px -10px var(--btn-color);
-    transition: all 0.3s ease-out;
-    border-color: var(--color-brand-yellow);
-    border-width: 1.5px;
   }
 
   .btn-brand-yellow-effect:hover {
     transform: translateY(-2px);
-    border-width: none;
+    
+    /* No hover, redefine a variável para a cor sólida original */
     --btn-color: var(--color-brand-yellow);
+    
     color: var(--color-brand-white);
+    
+    /* Aqui mantivemos o shadow fixo que você já tinha */
     box-shadow: 0 20px 25px -5px rgba(234, 179, 8, 0.4), 0 8px 10px -6px rgba(234, 179, 8, 0.4);
+  }
+
+  /* Efeito de Vidro Reutilizável */
+  .glass-card-effect {
+    /* Cor de fundo com opacidade (white/60) */
+    background-color: rgb(255 255 255 / 0.6);
+    
+    /* O desfoque do fundo (backdrop-blur-xl) */
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px); /* Safari support */
+    
+    /* Borda sutil (border-white/50) */
+    border: 1px solid rgb(255 255 255 / 0.5);
+    
+    /* Sombra colorida (shadow-xl + shadow-slate-200/50) */
+    box-shadow: 0 20px 25px -5px rgb(226 232 240 / 0.5), 0 8px 10px -6px rgb(226 232 240 / 0.5);
   }
 }
