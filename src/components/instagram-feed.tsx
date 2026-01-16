@@ -92,7 +92,7 @@ function InstaCard({ post }: { post: any }) {
 
             {/* OVERLAY LIMPO - APENAS BOTÃO NO HOVER */}
             <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-20">
-                <div className="px-6 py-3 bg-brand-yellow text-brand-blue rounded-full text-xs font-bold shadow-lg flex items-center gap-2 transform scale-90 group-hover:scale-100 transition-all">
+                <div className="px-6 py-3 rounded-full text-xs font-bold flex items-center gap-2 transform scale-90 group-hover:scale-100 btn-brand-yellow-effect">
                     <Instagram className="w-4 h-4" />
                     Ver no Instagram
                 </div>
@@ -186,7 +186,7 @@ export function InstagramFeed() {
                                 </div>
                             </div>
 
-                            <a href={profile.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 bg-brand-yellow text-brand-blue font-bold rounded-full hover:bg-brand-dark transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 w-full md:w-auto justify-center">
+                            <a href={profile.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 font-bold rounded-full w-full md:w-auto justify-center btn-brand-yellow-effect">
                                 <Instagram className="w-4 h-4" />
                                 Seguir no Insta
                             </a>

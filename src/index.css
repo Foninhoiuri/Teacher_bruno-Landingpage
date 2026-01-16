@@ -55,4 +55,18 @@
     transform: translateY(-2px);
     box-shadow: 0 14px 35px -10px var(--btn-color);
   }
+
+  /* Efeito Botão Amarelo (Brand) */
+  .btn-brand-yellow-effect {
+    --btn-color: var(--color-brand-yellow);
+    background-color: var(--btn-color);
+    color: var(--color-brand-blue);
+    box-shadow: 0 10px 25px -10px var(--btn-color);
+    transition: all 0.3s ease-out;
+  }
+
+  .btn-brand-yellow-effect:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 35px -10px var(--btn-color);
+  }
 }
