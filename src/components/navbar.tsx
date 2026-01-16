@@ -8,7 +8,7 @@ import { Menu, X, ChevronDown, UserCircle } from "lucide-react";
 const NAV_LINKS = [
     { name: "Sobre", href: "#about" },
     { name: "Metodologia", href: "#methodology" },
-    { name: "Aulas", href: "#plans", active: true },
+    { name: "Aulas", href: "#plans" },
     { name: "Business", href: "#business" },
     { name: "Tradução", href: "#translation" },
 ];
@@ -22,6 +22,30 @@ const FLAGS = {
 export function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [lang, setLang] = useState<"BR" | "US">("BR");
+    const [activeSection, setActiveSection] = useState("");
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const sections = document.querySelectorAll("section[id]");
+            const scrollPosition = window.scrollY + 150; // Offset ajustado para considerar a navbar
+
+            sections.forEach((section) => {
+                const sectionTop = (section as HTMLElement).offsetTop;
+                const sectionHeight = (section as HTMLElement).offsetHeight;
+                const sectionId = section.getAttribute("id") || "";
+
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    setActiveSection(sectionId);
+                }
+            });
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        // Chamada inicial para definir ativo no load
+        handleScroll();
+
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     const toggleLang = () => setLang(prev => prev === "BR" ? "US" : "BR");
 
@@ -29,7 +53,7 @@ export function Navbar() {
         <motion.nav
             initial={{ y: -100 }}
             animate={{ y: 0 }}
-            className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100 transition-colors duration-300"
+            className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-100 dark:border-slate-800 transition-colors duration-300"
         >
             <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
 
@@ -70,18 +94,21 @@ export function Navbar() {
 
                 {/* 2. MENU CENTRAL (Cápsula) */}
                 <div className="hidden lg:flex items-center gap-1 bg-slate-100/70 p-1.5 rounded-full border border-slate-200/50">
-                    {NAV_LINKS.map(link => (
-                        <a
-                            key={link.name}
-                            href={link.href}
-                            className={`px-5 py-2 text-sm font-medium rounded-full transition-all duration-200 ${link.active
-                                ? "bg-white text-brand-blue shadow-sm font-bold"
-                                : "text-slate-500 hover:text-brand-blue hover:bg-white/50"
-                                }`}
-                        >
-                            {link.name}
-                        </a>
-                    ))}
+                    {NAV_LINKS.map(link => {
+                        const isActive = activeSection === link.href.substring(1);
+                        return (
+                            <a
+                                key={link.name}
+                                href={link.href}
+                                className={`px-5 py-2 text-sm font-medium rounded-full transition-all duration-200 ${isActive
+                                    ? "bg-white text-brand-blue shadow-sm font-bold"
+                                    : "text-slate-500 hover:text-brand-blue hover:bg-white/50"
+                                    }`}
+                            >
+                                {link.name}
+                            </a>
+                        );
+                    })}
                 </div>
 
                 {/* 3. AÇÕES (DIREITA) */}
@@ -121,19 +148,22 @@ export function Navbar() {
                         className="lg:hidden bg-white border-t border-slate-100 overflow-hidden shadow-xl"
                     >
                         <div className="flex flex-col p-6 gap-3">
-                            {NAV_LINKS.map(link => (
-                                <a
-                                    key={link.name}
-                                    href={link.href}
-                                    onClick={() => setIsOpen(false)}
-                                    className={`px-4 py-3 text-base font-medium rounded-xl ${link.active
-                                        ? "bg-slate-100 text-brand-blue font-bold"
-                                        : "text-slate-600 hover:bg-slate-50"
-                                        }`}
-                                >
-                                    {link.name}
-                                </a>
-                            ))}
+                            {NAV_LINKS.map(link => {
+                                const isActive = activeSection === link.href.substring(1);
+                                return (
+                                    <a
+                                        key={link.name}
+                                        href={link.href}
+                                        onClick={() => setIsOpen(false)}
+                                        className={`px-4 py-3 text-base font-medium rounded-xl ${isActive
+                                            ? "bg-slate-100 text-brand-blue font-bold"
+                                            : "text-slate-600 hover:bg-slate-50"
+                                            }`}
+                                    >
+                                        {link.name}
+                                    </a>
+                                );
+                            })}
                             <hr className="my-2 border-slate-100" />
 
                             {/* Idioma Mobile (Também ajustado) */}
