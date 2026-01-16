@@ -47,7 +47,7 @@ export function PainPoints() {
                         <span className="text-sm font-bold text-slate-700 tracking-wide">Método Teacher Bruno</span>
                     </div>
 
-                    <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+                    <h2 className="text-4xl md:text-5xl font-bold text-brand-blue mb-4">
                         Inglês sem enrolação e <br />
                         <span className="text-brand-yellow">Zero Decoreba.</span>
                     </h2>
@@ -80,11 +80,11 @@ export function PainPoints() {
 
                             {/* Conteúdo */}
                             <div className="p-5 pt-6 flex-1 flex flex-col">
-                                <h3 className="text-xl font-bold text-slate-900 mb-3 leading-tight">
+                                <h3 className="text-xl font-bold text-brand-blue mb-3 leading-tight">
                                     {step.title}
                                 </h3>
                                 {/* MUDANÇA AQUI: group-hover para escurecer o texto no fundo amarelo */}
-                                <p className="text-sm mb-6 leading-relaxed flex-1 text-slate-500 font-medium group-hover:text-slate-900">
+                                <p className="text-sm mb-6 leading-relaxed flex-1 text-slate-500 font-medium group-hover:text-brand-blue">
                                     {step.description}
                                 </p>
 
@@ -93,7 +93,7 @@ export function PainPoints() {
                                     {/* MUDANÇA AQUI: group-hover para transformar o botão branco em preto */}
                                     <button className={`w-full py-3 px-6 rounded-full text-sm font-bold transition-all flex items-center justify-center gap-2
                                         bg-white border border-slate-200 text-slate-700 shadow-sm
-                                        group-hover:bg-slate-900 group-hover:text-white group-hover:border-transparent
+                                        group-hover:bg-brand-blue group-hover:text-white group-hover:border-transparent
                                     `}>
                                         {step.icon}
                                         {step.cta}

@@ -10,7 +10,7 @@ export function BusinessSkills() {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     <div className="flex flex-col gap-6 order-2 lg:order-1">
                         <span className="text-brand-yellow font-bold tracking-wider uppercase text-sm">Carreira & Negócios</span>
-                        <h2 className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight">
+                        <h2 className="text-4xl md:text-5xl font-bold text-brand-blue leading-tight">
                             Ferramentas para o <span className="text-brand-yellow">Sucesso</span> Profissional.
                         </h2>
                         <p className="text-slate-600 text-lg">

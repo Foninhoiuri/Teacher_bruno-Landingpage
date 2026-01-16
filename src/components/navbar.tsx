@@ -36,11 +36,11 @@ export function Navbar() {
                 <div className="flex items-center gap-3">
                     <img src="/logo.png" alt="Teacher Bruno Logo" className="w-9 h-9 object-contain" />
                     <div className="flex flex-col">
-                        <span className="text-lg font-extrabold tracking-tight text-slate-900 leading-none">
+                        <span className="text-lg font-extrabold tracking-tight text-brand-blue leading-none">
                             Teacher Bruno
                         </span>
-                        <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-                            English & Translation
+                        <span className="text-lg font-bold text-slate-400  leading-none text-center">
+                            Fernandes
                         </span>
                     </div>
                 </div>
@@ -52,8 +52,8 @@ export function Navbar() {
                             key={link.name}
                             href={link.href}
                             className={`px-5 py-2 text-sm font-medium rounded-full transition-all duration-200 ${link.active
-                                ? "bg-white text-slate-900 shadow-sm font-bold"
-                                : "text-slate-500 hover:text-slate-900 hover:bg-white/50"
+                                ? "bg-white text-brand-blue shadow-sm font-bold"
+                                : "text-slate-500 hover:text-brand-blue hover:bg-white/50"
                                 }`}
                         >
                             {link.name}
@@ -102,7 +102,7 @@ export function Navbar() {
                 {/* MENU MOBILE TOGGLE */}
                 <button
                     onClick={() => setIsOpen(!isOpen)}
-                    className="lg:hidden p-2 text-slate-900 hover:bg-slate-100 rounded-full transition-colors"
+                    className="lg:hidden p-2 text-brand-blue hover:bg-slate-100 rounded-full transition-colors"
                 >
                     {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
                 </button>
@@ -124,7 +124,7 @@ export function Navbar() {
                                     href={link.href}
                                     onClick={() => setIsOpen(false)}
                                     className={`px-4 py-3 text-base font-medium rounded-xl ${link.active
-                                        ? "bg-slate-100 text-slate-900 font-bold"
+                                        ? "bg-slate-100 text-brand-blue font-bold"
                                         : "text-slate-600 hover:bg-slate-50"
                                         }`}
                                 >
@@ -141,7 +141,7 @@ export function Navbar() {
                                     className="flex items-center gap-2 px-3 py-2 bg-slate-50 border border-slate-200 rounded-full"
                                 >
                                     <img src={FLAGS[lang]} alt={lang} className="w-5 h-5 rounded-full" />
-                                    <span className="text-sm font-bold text-slate-900">{lang}</span>
+                                    <span className="text-sm font-bold text-brand-blue">{lang}</span>
                                 </button>
                             </div>
 

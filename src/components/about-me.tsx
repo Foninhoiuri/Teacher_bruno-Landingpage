@@ -45,7 +45,7 @@ export function AboutMe() {
                     </div>
 
                     {/* Título */}
-                    <h2 className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight">
+                    <h2 className="text-4xl md:text-5xl font-bold text-brand-blue leading-tight">
                         Muito prazer, <br />
                         eu sou o <span className="text-brand-yellow">Teacher Bruno.</span>
                     </h2>
@@ -58,7 +58,7 @@ export function AboutMe() {
                         <p>
                             Em 2018, ingressei na franquia de idiomas que mais cresce no país, <strong>KNN Idiomas</strong>. Fiquei surpreso com a eficiência do método da escola e me desenvolvi como jamais poderia imaginar nos quase três anos que passei tendo contato com pessoas incríveis e participando de treinamentos com especialistas da área.
                         </p>
-                        <p className="font-medium text-slate-900">
+                        <p className="font-medium text-brand-blue">
                             Agora trabalhando exclusivamente pra mim, trago para meus alunos o melhor de todos os métodos que já conheci, eliminando intermediários desnecessários e entendendo a dificuldade e necessidade exclusiva de cada aluno, respeitando as diferenças e extraindo toda a capacidade de cada um daqueles que me escolhem como treinador, teacher ou amigo pessoal!
                         </p>
                     </div>

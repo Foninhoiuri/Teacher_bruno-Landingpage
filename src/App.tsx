@@ -14,7 +14,7 @@ import { Translation } from "./components/translation";
 
 function App() {
   return (
-    <div className="min-h-screen bg-slate-50 font-sans text-slate-900 overflow-x-hidden selection:bg-brand-yellow/30">
+    <div className="min-h-screen bg-slate-50 font-sans text-brand-blue overflow-x-hidden selection:bg-brand-yellow/30">
       <Navbar />
       <main className="pt-20">
         <Hero />

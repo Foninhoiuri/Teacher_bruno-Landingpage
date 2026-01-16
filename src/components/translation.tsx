@@ -21,7 +21,7 @@ export function Translation() {
                             className="w-full h-full object-cover"
                         />
                         {/* Overlay Gradient */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent flex items-end p-8">
+                        <div className="absolute inset-0 bg-gradient-to-t from-brand-blue/60 to-transparent flex items-end p-8">
                             <div className="text-white">
                                 <p className="font-bold text-lg">Soluções Corporativas</p>
                                 <p className="text-sm text-slate-200">Qualidade e precisão para seu negócio</p>
@@ -41,7 +41,7 @@ export function Translation() {
                         <span className="text-xs font-bold text-slate-700 uppercase tracking-wide">Para Empresas</span>
                     </div>
 
-                    <h2 className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight">
+                    <h2 className="text-4xl md:text-5xl font-bold text-brand-blue leading-tight">
                         Tradução Profissional <br /> & Consultoria.
                     </h2>
 
@@ -66,7 +66,7 @@ export function Translation() {
                     </div>
 
                     <div className="pt-4 flex flex-col sm:flex-row gap-4">
-                        <button className="px-8 py-4 bg-slate-900 text-white font-bold rounded-xl hover:bg-slate-800 transition-all shadow-lg hover:-translate-y-1">
+                        <button className="px-8 py-4 bg-brand-blue text-white font-bold rounded-xl hover:bg-slate-800 transition-all shadow-lg hover:-translate-y-1">
                             Solicitar Orçamento
                         </button>
                     </div>

@@ -34,7 +34,7 @@ export function FAQ() {
                         <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
                         <span className="text-xs font-bold text-slate-700 uppercase tracking-wide">FAQ</span>
                     </div>
-                    <h2 className="text-4xl font-bold text-slate-900 mb-6">
+                    <h2 className="text-4xl font-bold text-brand-blue mb-6">
                         Dúvidas <br /> Frequentes
                     </h2>
                     <p className="text-slate-500 mb-8">
@@ -47,9 +47,9 @@ export function FAQ() {
                                 <img key={i} src={`https://source.unsplash.com/random/100x100?face&sig=${i + 10}`} className="w-10 h-10 rounded-full border-2 border-white" />
                             ))}
                         </div>
-                        <h4 className="font-bold text-slate-900 mb-1">Ainda tem dúvidas?</h4>
+                        <h4 className="font-bold text-brand-blue mb-1">Ainda tem dúvidas?</h4>
                         <p className="text-sm text-slate-500 mb-4">Fale com a gente no WhatsApp.</p>
-                        <button className="w-full py-3 bg-slate-900 text-white rounded-xl font-bold text-sm hover:bg-slate-700 transition-colors">
+                        <button className="w-full py-3 bg-brand-blue text-white rounded-xl font-bold text-sm hover:bg-slate-700 transition-colors">
                             Falar com Suporte
                         </button>
                     </div>
@@ -66,8 +66,8 @@ export function FAQ() {
                                 onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
                                 className="w-full flex items-center justify-between p-6 text-left"
                             >
-                                <span className="font-bold text-lg text-slate-900">{faq.question}</span>
-                                <div className={`p-1 rounded-full border transition-colors ${openIndex === idx ? "bg-slate-900 border-slate-900 text-white" : "border-slate-200 text-slate-400"}`}>
+                                <span className="font-bold text-lg text-brand-blue">{faq.question}</span>
+                                <div className={`p-1 rounded-full border transition-colors ${openIndex === idx ? "bg-brand-blue border-brand-blue text-white" : "border-slate-200 text-slate-400"}`}>
                                     {openIndex === idx ? <X className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
                                 </div>
                             </button>

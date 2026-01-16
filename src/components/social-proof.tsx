@@ -49,7 +49,7 @@ export function SocialProof() {
                         <MessageCircle className="w-4 h-4 text-brand-yellow" />
                         <span className="text-xs font-bold text-slate-700 uppercase tracking-wide">Depoimentos</span>
                     </div>
-                    <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+                    <h2 className="text-4xl md:text-5xl font-bold text-brand-blue mb-6">
                         O que meus alunos <br /> dizem.
                     </h2>
                 </div>
@@ -59,7 +59,7 @@ export function SocialProof() {
                     <div className="absolute top-1/2 -left-4 md:-left-16 -translate-y-1/2 z-10">
                         <button
                             onClick={prevReview}
-                            className="p-4 bg-slate-900 text-white rounded-full hover:bg-slate-700 transition-colors shadow-lg"
+                            className="p-4 bg-brand-blue text-white rounded-full hover:bg-slate-700 transition-colors shadow-lg"
                         >
                             <ArrowLeft className="w-5 h-5" />
                         </button>
@@ -67,7 +67,7 @@ export function SocialProof() {
                     <div className="absolute top-1/2 -right-4 md:-right-16 -translate-y-1/2 z-10">
                         <button
                             onClick={nextReview}
-                            className="p-4 bg-slate-900 text-white rounded-full hover:bg-slate-700 transition-colors shadow-lg"
+                            className="p-4 bg-brand-blue text-white rounded-full hover:bg-slate-700 transition-colors shadow-lg"
                         >
                             <ArrowRight className="w-5 h-5" />
                         </button>
@@ -100,12 +100,12 @@ export function SocialProof() {
                                     ))}
                                 </div>
 
-                                <blockquote className="text-xl md:text-2xl font-medium text-slate-900 leading-relaxed mb-8">
+                                <blockquote className="text-xl md:text-2xl font-medium text-brand-blue leading-relaxed mb-8">
                                     "{REVIEWS[activeIndex].text}"
                                 </blockquote>
 
                                 <div>
-                                    <h4 className="text-lg font-bold text-slate-900">{REVIEWS[activeIndex].name}</h4>
+                                    <h4 className="text-lg font-bold text-brand-blue">{REVIEWS[activeIndex].name}</h4>
                                     <p className="text-slate-500">{REVIEWS[activeIndex].role}</p>
                                 </div>
                             </div>

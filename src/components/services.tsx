@@ -42,7 +42,7 @@ export function Services() { // Keeping component name 'Services' for compatibil
                         <Zap className="w-4 h-4 text-brand-yellow" />
                         <span className="text-xs font-bold text-slate-700 uppercase tracking-wide">Investimento</span>
                     </div>
-                    <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-8">
+                    <h2 className="text-4xl md:text-5xl font-bold text-brand-blue mb-8">
                         Escolha o plano ideal <br /> para você.
                     </h2>
 
@@ -53,8 +53,8 @@ export function Services() { // Keeping component name 'Services' for compatibil
                                 key={cycle}
                                 onClick={() => setBillingCycle(cycle)}
                                 className={`px-6 py-2 rounded-full text-sm font-bold transition-all ${billingCycle === cycle
-                                    ? "bg-slate-900 text-white shadow-md"
-                                    : "text-slate-500 hover:text-slate-900"
+                                    ? "bg-brand-blue text-white shadow-md"
+                                    : "text-slate-500 hover:text-brand-blue"
                                     }`}
                             >
                                 {cycle}
@@ -76,24 +76,24 @@ export function Services() { // Keeping component name 'Services' for compatibil
                                 hover:-translate-y-2 hover:shadow-xl hover:bg-brand-yellow hover:border-transparent hover:shadow-brand-yellow/40`}
                         >
                             {plan.highlight && (
-                                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-900 text-brand-yellow px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wide shadow-sm z-20">
+                                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-blue text-brand-yellow px-4 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-wide shadow-sm z-20">
                                     {plan.tag}
                                 </div>
                             )}
 
                             <div className="mb-8">
-                                <h3 className="text-lg font-bold text-slate-500 mb-4 group-hover:text-slate-900 transition-colors">{plan.name}</h3>
+                                <h3 className="text-lg font-bold text-slate-500 mb-4 group-hover:text-brand-blue transition-colors">{plan.name}</h3>
                                 <div className="flex items-baseline gap-1">
-                                    <span className="text-5xl font-bold text-slate-900 tracking-tight">{plan.price}</span>
+                                    <span className="text-5xl font-bold text-brand-blue tracking-tight">{plan.price}</span>
                                     <span className="text-slate-400 font-medium group-hover:text-slate-800 transition-colors">{plan.period}</span>
                                 </div>
                             </div>
 
                             <ul className="flex-1 space-y-4 mb-8">
                                 {plan.features.map((feature, i) => (
-                                    <li key={i} className="flex items-start gap-3 text-slate-600 text-sm font-medium group-hover:text-slate-900 transition-colors">
-                                        <div className="mt-0.5 w-5 h-5 bg-brand-yellow/10 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-white/30 transition-colors">
-                                            <Check className="w-3 h-3 text-brand-dark" />
+                                    <li key={i} className="flex items-start gap-3 text-slate-600 text-sm font-medium group-hover:text-brand-blue transition-colors">
+                                        <div className="mt-0.5 w-5 h-5 bg-brand-yellow/10 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-white/70 transition-colors">
+                                            <Check className="w-3 h-3 text-brand-dark group-hover:text-black/60 transition-colors" />
                                         </div>
                                         {feature}
                                     </li>
@@ -102,7 +102,7 @@ export function Services() { // Keeping component name 'Services' for compatibil
 
                             <button className={`w-full py-4 rounded-full font-bold text-sm transition-all flex items-center justify-center gap-2
                                 bg-white border border-slate-200 text-slate-700 shadow-sm
-                                group-hover:bg-slate-900 group-hover:text-white group-hover:border-transparent`}>
+                                group-hover:bg-brand-blue group-hover:text-white group-hover:border-transparent`}>
                                 Escolher Plano
                             </button>
                         </motion.div>

@@ -11,7 +11,7 @@ export function Footer() {
                     <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
                     <div className="relative z-10 max-w-xl">
-                        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-2">
+                        <h2 className="text-3xl md:text-4xl font-bold text-brand-blue mb-2">
                             Leve seu inglês para o próximo nível.
                         </h2>
                         <p className="text-slate-800 font-medium text-lg">
@@ -40,13 +40,13 @@ export function Footer() {
                             Transformando a maneira como você aprende inglês. Foco em resultados reais e comunicação global.
                         </p>
                         <div className="flex gap-4">
-                            <a href="#" className="p-2 bg-slate-900 rounded-full hover:bg-slate-800 transition-colors text-slate-400 hover:text-white">
+                            <a href="#" className="p-2 bg-brand-blue rounded-full hover:bg-slate-800 transition-colors text-slate-400 hover:text-white">
                                 <Instagram className="w-5 h-5" />
                             </a>
-                            <a href="#" className="p-2 bg-slate-900 rounded-full hover:bg-slate-800 transition-colors text-slate-400 hover:text-white">
+                            <a href="#" className="p-2 bg-brand-blue rounded-full hover:bg-slate-800 transition-colors text-slate-400 hover:text-white">
                                 <Linkedin className="w-5 h-5" />
                             </a>
-                            <a href="#" className="p-2 bg-slate-900 rounded-full hover:bg-slate-800 transition-colors text-slate-400 hover:text-white">
+                            <a href="#" className="p-2 bg-brand-blue rounded-full hover:bg-slate-800 transition-colors text-slate-400 hover:text-white">
                                 <Facebook className="w-5 h-5" />
                             </a>
                         </div>

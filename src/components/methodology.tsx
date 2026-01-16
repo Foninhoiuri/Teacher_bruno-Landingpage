@@ -8,7 +8,7 @@ export function Methodology() {
                 {/* PART 2: Evolua suas Skills - Video Call Mockup */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     {/* Video Mockup */}
-                    <div className="relative rounded-3xl overflow-hidden shadow-2xl border-8 border-slate-900 bg-slate-800 aspect-video group">
+                    <div className="relative rounded-3xl overflow-hidden shadow-2xl border-8 border-brand-blue bg-slate-800 aspect-video group">
                         <img
                             src="https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?q=80&w=1000&auto=format&fit=crop"
                             className="w-full h-full object-cover opacity-80"
@@ -28,7 +28,7 @@ export function Methodology() {
                     {/* Text */}
                     <div className="flex flex-col gap-6">
                         <span className="text-brand-yellow font-bold tracking-wider uppercase text-sm">Metodologia Online</span>
-                        <h2 className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight">
+                        <h2 className="text-4xl md:text-5xl font-bold text-brand-blue leading-tight">
                             Evolua suas <span className="underline decoration-brand-yellow decoration-4 underline-offset-4">Skills</span> de onde estiver.
                         </h2>
                         <p className="text-slate-600 text-lg">
@@ -39,7 +39,7 @@ export function Methodology() {
                                 1
                             </div>
                             <div>
-                                <h4 className="font-bold text-slate-900">Feedback Imediato</h4>
+                                <h4 className="font-bold text-brand-blue">Feedback Imediato</h4>
                                 <p className="text-sm text-slate-600">Correção de pronúncia e estrutura em tempo real.</p>
                             </div>
                         </div>

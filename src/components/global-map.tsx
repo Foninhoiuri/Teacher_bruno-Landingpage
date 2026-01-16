@@ -57,7 +57,7 @@ export function GlobalMap() {
         <section className="relative py-24 bg-white overflow-hidden text-center">
 
             <div className="relative z-10 max-w-3xl mx-auto px-6 mb-12">
-                <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">
+                <h2 className="text-4xl md:text-5xl font-extrabold text-brand-blue mb-6 tracking-tight">
                     Alunos pelo Mundo
                 </h2>
                 <p className="text-slate-500 text-lg leading-relaxed">
@@ -99,7 +99,7 @@ export function GlobalMap() {
                                         <img key={id} src={`https://i.pravatar.cc/100?img=${id + 10}`} className="w-8 h-8 rounded-full border-2 border-white" alt="avatar" />
                                     ))}
                                 </div>
-                                <span className="text-lg font-black text-slate-900">+2.5k</span>
+                                <span className="text-lg font-black text-brand-blue">+2.5k</span>
                             </div>
                         </div>
                     </div>

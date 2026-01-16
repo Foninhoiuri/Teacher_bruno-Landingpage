@@ -24,7 +24,7 @@ export function Hero() {
                         <span className="text-xs font-black text-slate-600 uppercase">Vagas 2026</span>
                     </div>
 
-                    <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-slate-900 leading-[1.1]">
+                    <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-brand-blue leading-[1.1]">
                         Conecte-se com o <span className="text-brand-yellow">mundo</span> <br className="hidden lg:block" /> através das palavras.
                     </h1>
 
@@ -33,11 +33,11 @@ export function Hero() {
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4 mt-2">
-                        <button className="flex items-center justify-center gap-2 px-8 py-4 bg-brand-yellow text-slate-900 font-bold text-md rounded-xl hover:brightness-90 transition-all shadow-lg shadow-brand-yellow/20 hover:shadow-xl hover:-translate-y-0.5">
+                        <button className="flex items-center justify-center gap-2 px-8 py-4 bg-brand-yellow text-brand-blue font-bold text-md rounded-xl hover:brightness-90 transition-all shadow-lg shadow-brand-yellow/20 hover:shadow-xl hover:-translate-y-0.5">
                             Destravar meu Inglês
                             <ArrowRight className="w-5 h-5" />
                         </button>
-                        <button className="flex items-center justify-center gap-2 px-8 py-4 bg-white text-slate-600 font-bold text-md rounded-xl border border-slate-200 hover:bg-slate-50 hover:text-slate-900 transition-all shadow-sm">
+                        <button className="flex items-center justify-center gap-2 px-8 py-4 bg-white text-slate-600 font-bold text-md rounded-xl border border-slate-200 hover:bg-slate-50 hover:text-brand-blue transition-all shadow-sm">
                             Conhecer Metodologia
                         </button>
                     </div>

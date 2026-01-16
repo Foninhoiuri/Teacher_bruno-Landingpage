@@ -200,7 +200,7 @@ export function InstagramFeed() {
                                     <img src={profile.img} alt={profile.name} className="relative w-20 h-20 rounded-full border-4 border-white object-cover shadow-sm" />
                                 </a>
                                 <div>
-                                    <h3 className="text-xl font-bold text-slate-900 flex items-center justify-center md:justify-start gap-1">
+                                    <h3 className="text-xl font-bold text-brand-blue flex items-center justify-center md:justify-start gap-1">
                                         {profile.username}
                                         <CheckCircle2 className="w-4 h-4 text-blue-500 fill-blue-50" />
                                     </h3>
@@ -212,16 +212,16 @@ export function InstagramFeed() {
 
                             <div className="flex gap-8 text-center">
                                 <div>
-                                    <span className="block text-xl font-bold text-slate-900">{profile.followers}</span>
+                                    <span className="block text-xl font-bold text-brand-blue">{profile.followers}</span>
                                     <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Seguidores</span>
                                 </div>
                                 <div>
-                                    <span className="block text-xl font-bold text-slate-900">{profile.posts}</span>
+                                    <span className="block text-xl font-bold text-brand-blue">{profile.posts}</span>
                                     <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Posts</span>
                                 </div>
                             </div>
 
-                            <a href={profile.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 bg-brand-yellow text-slate-900 font-bold rounded-full hover:bg-brand-dark transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 w-full md:w-auto justify-center">
+                            <a href={profile.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 bg-brand-yellow text-brand-blue font-bold rounded-full hover:bg-brand-dark transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 w-full md:w-auto justify-center">
                                 <Instagram className="w-4 h-4" />
                                 Seguir no Insta
                             </a>
