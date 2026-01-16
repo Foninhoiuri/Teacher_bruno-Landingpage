@@ -17,43 +17,43 @@ function App() {
     <div className="min-h-screen bg-slate-50 font-sans text-brand-blue overflow-x-hidden selection:bg-brand-yellow/30">
       <Navbar />
       <main className="pt-20">
-        <section className="scroll-mt-28" id="home">
+        <section id="home">
           <Hero />
         </section>
 
         <InstagramFeed />
 
-        <section className="scroll-mt-28" id="about">
+        <section id="about">
           <AboutMe />
         </section>
 
         <GlobalReach />
 
-        <section className="scroll-mt-28" id="challenges">
+        <section id="challenges">
           <Challenges />
         </section>
 
-        <section className="scroll-mt-28" id="methodology">
+        <section id="methodology">
           <Methodology />
         </section>
 
-        <section className="scroll-mt-28" id="business">
+        <section id="business">
           <BusinessEnglish />
         </section>
 
-        <section className="scroll-mt-28" id="testimonials">
+        <section id="testimonials">
           <Testimonials />
         </section>
 
-        <section className="scroll-mt-28" id="plans">
+        <section id="plans">
           <Plans />
         </section>
 
-        <section className="scroll-mt-28" id="translation">
+        <section id="translation">
           <Translation />
         </section>
 
-        <section className="scroll-mt-28" id="faq">
+        <section id="faq">
           <FAQ />
         </section>
       </main>
