@@ -85,7 +85,7 @@ export function Navbar() {
                         <div className="flex items-center gap-3">
                             <img src="/logo.png" alt="Teacher Bruno Logo" className="w-auto h-12" />
                             <div className="flex flex-col">
-                                <span className="text-lg font-extrabold tracking-tight text-blue-600 leading-none">Teacher Bruno</span>
+                                <span className="text-lg font-extrabold tracking-tight text-[var(--color-brand-yellow)] leading-none">Teacher Bruno</span>
                                 <span className="text-lg font-bold text-slate-400 leading-none">Fernandes</span>
                             </div>
                         </div>
@@ -108,8 +108,8 @@ export function Navbar() {
                                     key={link.id}
                                     onClick={() => handleScroll(link.id)}
                                     className={`px-5 py-2 text-sm font-medium rounded-full transition-all duration-200 ${isActive
-                                        ? "bg-white text-blue-600 shadow-sm font-bold"
-                                        : "text-slate-500 hover:text-blue-600 hover:bg-white/50"
+                                        ? "bg-white text-brand-blue shadow-sm font-bold"
+                                        : "text-slate-500 hover:text-brand-blue hover:bg-white/50"
                                         }`}
                                 >
                                     {link.label}
@@ -124,7 +124,7 @@ export function Navbar() {
                             <UserCircle className="w-4 h-4 text-slate-400" />
                             Área do Aluno
                         </button>
-                        <button className="flex items-center gap-2 px-6 py-2.5 text-sm font-bold text-white bg-green-500 hover:bg-green-600 transition-colors rounded-full shadow-md hover:shadow-lg">
+                        <button className="flex items-center gap-2 px-6 py-2.5 text-sm font-bold rounded-full btn-whatsapp-effect">
                             <WhatsAppIcon className="w-4 h-4" />
                             Comece Agora
                         </button>
@@ -138,7 +138,7 @@ export function Navbar() {
             <div className="lg:hidden fixed top-0 left-0 right-0 z-30 bg-white/90 backdrop-blur-md border-b border-slate-100 h-16 flex items-center px-6 justify-between shadow-sm">
                 <div className="flex items-center gap-2">
                     <img src="/logo.png" alt="Teacher Bruno Logo" className="w-auto h-8" />
-                    <span className="text-lg font-extrabold text-blue-600">Teacher Bruno</span>
+                    <span className="text-lg font-extrabold text-[var(--color-brand-yellow)]">Teacher Bruno</span>
                 </div>
                 <button onClick={toggleLang} className="flex items-center gap-1.5 px-2 py-1 bg-slate-50 rounded-full border border-slate-200">
                     <img src={FLAGS[lang]} alt={lang} className="w-5 h-5 rounded-full" />
@@ -158,7 +158,7 @@ export function Navbar() {
                     className={`
                         w-14 h-14 rounded-full flex items-center justify-center
                         shadow-xl transition-all duration-300 z-50
-                        ${isOpen ? "bg-red-500 text-white rotate-90" : "bg-blue-600 text-white rotate-0"}
+                        ${isOpen ? "bg-red-500 text-white rotate-90" : "bg-brand-blue text-white rotate-0"}
                     `}
                 >
                     {isOpen ? <X strokeWidth={2.5} /> : <Plus strokeWidth={2.5} />}
@@ -175,7 +175,7 @@ export function Navbar() {
                                 animate={{ opacity: 1, x: 0, scale: 1 }}
                                 exit={{ opacity: 0, x: 20, scale: 0.8 }}
                                 transition={{ delay: 0.05 }}
-                                className="flex items-center gap-3 px-5 py-3 rounded-full bg-green-500 text-white font-bold shadow-lg"
+                                className="flex items-center gap-2 px-6 py-2.5 text-sm font-bold rounded-full btn-whatsapp-effect"
                                 onClick={() => alert("Link do WhatsApp")}
                             >
                                 Whatsapp <WhatsAppIcon className="w-5 h-5" />
@@ -205,9 +205,10 @@ export function Navbar() {
                                         px-5 py-2.5 rounded-xl font-medium shadow-md border
                                         backdrop-blur-md transition-colors
                                         ${activeId === link.id
-                                            ? "bg-blue-600 text-white border-blue-600"
-                                            : "bg-white/95 text-slate-600 border-white"
-                                        }
+                                        ${activeId === link.id
+                                        ? "bg-brand-blue text-white border-brand-blue"
+                                        : "bg-white/95 text-slate-600 border-white"
+                                    }
                                     `}
                                 >
                                     {link.label}
