@@ -93,15 +93,6 @@ export function Navbar() {
                 {/* 3. AÇÕES (DIREITA) */}
                 <div className="hidden lg:flex items-center gap-3">
 
-                    {/* Theme Toggle */}
-                    <button
-                        onClick={toggleTheme}
-                        className="p-2 text-slate-500 hover:text-brand-blue hover:bg-slate-50 rounded-full transition-colors mr-2"
-                        title="Alternar Tema"
-                    >
-                        {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-                    </button>
-
                     {/* --- TOGGLE IDIOMA (Container Ajustado) --- */}
                     <button
                         onClick={toggleLang}
@@ -173,21 +164,13 @@ export function Navbar() {
 
                             {/* Idioma Mobile (Também ajustado) */}
                             <div className="flex items-center justify-between px-2">
-                                <div className="flex items-center gap-4">
-                                    <span className="text-sm font-medium text-slate-500">Idioma:</span>
-                                    <button
-                                        onClick={toggleLang}
-                                        className="flex items-center gap-2 px-3 py-2 bg-slate-50 border border-slate-200 rounded-full"
-                                    >
-                                        <img src={FLAGS[lang]} alt={lang} className="w-5 h-5 rounded-full" />
-                                        <span className="text-sm font-bold text-brand-blue">{lang}</span>
-                                    </button>
-                                </div>
+                                <span className="text-sm font-medium text-slate-500">Idioma:</span>
                                 <button
-                                    onClick={toggleTheme}
-                                    className="p-2 text-slate-500 hover:text-brand-blue hover:bg-slate-50 rounded-full transition-colors"
+                                    onClick={toggleLang}
+                                    className="flex items-center gap-2 px-3 py-2 bg-slate-50 border border-slate-200 rounded-full"
                                 >
-                                    {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+                                    <img src={FLAGS[lang]} alt={lang} className="w-5 h-5 rounded-full" />
+                                    <span className="text-sm font-bold text-brand-blue">{lang}</span>
                                 </button>
                             </div>
 

@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react";
 
 export function Hero() {
     return (
-        <section className="relative w-full min-h-[600px] lg:min-h-[700px] flex items-center bg-[var(--bg-secondary)] overflow-hidden py-16 transition-colors duration-300">
+        <section className="relative w-full min-h-[600px] lg:min-h-[700px] flex items-center bg-slate-50 overflow-hidden py-16">
             {/* Background Decor (Geral) */}
             <div className="absolute top-0 right-0 w-[45%] h-full bg-white/50 rounded-l-[100px] -z-10 hidden lg:block backdrop-blur-3xl" />
 
@@ -24,11 +24,11 @@ export function Hero() {
                         <span className="text-xs font-black text-slate-600 uppercase">Vagas 2026</span>
                     </div>
 
-                    <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-brand-blue dark:text-white leading-[1.1]">
+                    <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-brand-blue leading-[1.1]">
                         Conecte-se com o <span className="text-brand-yellow">mundo</span> <br className="hidden lg:block" /> através das palavras.
                     </h1>
 
-                    <p className="text-lg text-[var(--text-secondary)] max-w-lg leading-relaxed font-medium">
+                    <p className="text-lg text-slate-500 max-w-lg leading-relaxed font-medium">
                         Inglês sem enrolação e Tradução Profissional. Zero decoreba, foco total na prática e conversação real.
                     </p>
 

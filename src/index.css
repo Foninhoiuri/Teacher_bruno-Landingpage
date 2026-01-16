@@ -18,42 +18,11 @@
 }
 
 @layer base {
-  :root {
-    --bg-primary: #ffffff;
-    --bg-secondary: #f8fafc;
-    /* slate-50 */
-    --text-primary: #0f172a;
-    /* brand-blue */
-    --text-secondary: #64748b;
-    /* slate-500 */
-    --card-bg: #ffffff;
-    --border-color: #e2e8f0;
-    /* slate-200 */
-  }
-
-  .dark {
-    --bg-primary: #0f172a;
-    /* brand-blue as bg */
-    --bg-secondary: #020617;
-    /* slate-950/black */
-    --text-primary: #f8fafc;
-    /* slate-50/white */
-    --text-secondary: #94a3b8;
-    /* slate-400 */
-    --card-bg: #1e293b;
-    /* slate-800 */
-    --border-color: #334155;
-    /* slate-700 */
-  }
-
   html {
     scroll-behavior: smooth;
   }
 
   body {
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
-    transition: background-color 0.3s, color 0.3s;
-    @apply antialiased;
+    @apply bg-white text-brand-blue antialiased;
   }
 }
