@@ -13,6 +13,7 @@ import { AboutMe } from "./components/about-me";
 import { InstagramFeed } from "./components/instagram-feed";
 
 import { Translation } from "./components/translation";
+import { Methodology } from "./components/methodology";
 
 function App() {
   return (
@@ -24,12 +25,13 @@ function App() {
         <AboutMe />
         <GlobalMap />
         <PainPoints />
-             
+
         <BusinessSkills />
-        
+        <Methodology />
+
         <SocialProof />
         <Services />
-        <Translation />   
+        <Translation />
         <FAQ />
       </main>
       <Footer />
