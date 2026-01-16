@@ -2,7 +2,7 @@
 
 import { useRef, useEffect, useState } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
-import { Instagram, Heart, MessageCircle, ExternalLink, VolumeX, CheckCircle2 } from "lucide-react";
+import { Instagram, CheckCircle2 } from "lucide-react";
 
 // --- CONFIGURAÇÃO ---
 const WEBHOOK_PROFILE = "https://n8n.igoriurialves.com.br/webhook/instagram-profile";
@@ -90,30 +90,11 @@ function InstaCard({ post }: { post: any }) {
                 onError={() => setIsBroken(true)} // Se o vídeo não carregar, esconde o card
             />
 
-            <div className="absolute top-3 right-3 bg-black/50 p-1.5 rounded-full backdrop-blur-sm z-10">
-                <VolumeX className="w-4 h-4 text-white" />
-            </div>
-
-            <div className="absolute top-3 left-3 bg-black/50 px-2 py-0.5 rounded-md backdrop-blur-sm z-10">
-                <span className="text-[10px] font-bold text-white uppercase tracking-wider">Reel</span>
-            </div>
-
-            <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-4 text-white z-20">
-                <div className="flex items-center gap-6 font-bold text-lg">
-                    <div className="flex items-center gap-2">
-                        <Heart className="w-6 h-6 fill-white" />
-                        {post.likes}
-                    </div>
-                    <div className="flex items-center gap-2">
-                        <MessageCircle className="w-6 h-6 fill-white" />
-                        {post.comments}
-                    </div>
-                </div>
-                <p className="px-6 text-center text-xs font-medium text-white/80 line-clamp-3">
-                    {post.caption}
-                </p>
-                <div className="mt-2 px-4 py-2 bg-white/20 rounded-full text-xs font-bold backdrop-blur-sm flex items-center gap-2">
-                    Ver no Instagram <ExternalLink className="w-3 h-3" />
+            {/* OVERLAY LIMPO - APENAS BOTÃO NO HOVER */}
+            <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-20">
+                <div className="px-6 py-3 bg-brand-yellow text-brand-blue rounded-full text-xs font-bold shadow-lg flex items-center gap-2 transform scale-90 group-hover:scale-100 transition-all">
+                    <Instagram className="w-4 h-4" />
+                    Ver no Instagram
                 </div>
             </div>
         </a>
