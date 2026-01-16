@@ -48,7 +48,7 @@ const REELS = Object.entries(videoModules).map(([path, url]) => {
 function InstaCard({ post }: { post: any }) {
     const videoRef = useRef<HTMLVideoElement>(null);
     const containerRef = useRef(null);
-    
+
     // Detecta se o card está no centro da tela (-15% de margem para ativar)
     const isInCenter = useInView(containerRef, { margin: "0px -15% 0px -15%" });
 
@@ -113,13 +113,26 @@ export function InstagramFeed() {
     // Cria uma lista longa duplicando os posts para o efeito de "Loop Infinito"
     const displayPosts = [...REELS, ...REELS, ...REELS, ...REELS];
 
-    // Inicia a animação do carrossel (Move para a esquerda infinitamente)
+    // Inicia a animação do carrossel
     useEffect(() => {
-        controls.start({
-            x: "-50%",
-            transition: { ease: "linear", duration: 120, repeat: Infinity }
-        });
-    }, [controls]);
+        // Função para resetar e iniciar
+        const startMarquee = () => {
+            controls.set({ x: 0 }); // Garante que começa do zero
+            controls.start({
+                x: "-50%", // Move metade do tamanho total (já que duplicamos a lista)
+                transition: {
+                    ease: "linear",
+                    duration: 60, // Diminuí para 60s para testar (120s pode parecer parado)
+                    repeat: Infinity
+                }
+            });
+        };
+
+        // Pequeno delay para garantir que o DOM renderizou os vídeos e tem largura
+        const timeout = setTimeout(startMarquee, 100);
+
+        return () => clearTimeout(timeout);
+    }, [controls, displayPosts.length]);
 
     // Busca os dados atualizados do perfil no n8n (Foto, Seguidores, Posts)
     useEffect(() => {
@@ -155,10 +168,8 @@ export function InstagramFeed() {
                 <div className="absolute right-0 top-0 bottom-0 w-15 md:w-60 bg-gradient-to-l from-slate-50 to-transparent z-10 pointer-events-none" />
 
                 {/* Container da Animação */}
-                <div 
-                    className="flex overflow-hidden" 
-                    onMouseEnter={() => controls.stop()} // Para o carrossel ao passar o mouse
-                    onMouseLeave={() => controls.start({ x: "-50%", transition: { ease: "linear", duration: 120, repeat: Infinity } })}
+                <div
+                    className="flex overflow-hidden"
                 >
                     <motion.div className="flex" animate={controls}>
                         {displayPosts.map((post, index) => (
@@ -175,24 +186,24 @@ export function InstagramFeed() {
                     // Card com efeito Glassmorphism (Vidro)
                     <div className="bg-white/55 backdrop-blur-xl p-4 md:p-6 rounded-[2.5rem] shadow-xl shadow-slate-200/50 border border-white/35 max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-700">
                         <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
-                            
+
                             {/* Bloco 1: Foto e Nome */}
                             <div className="flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
                                 <a href={profile.link} target="_blank" rel="noreferrer" className="group relative block cursor-pointer">
-                                    
-                    {/* 1. O Anel Gradiente de fundo */}
-                    <div className="absolute -inset-0.5 bg-gradient-to-tr from-yellow-400 to-orange-500 rounded-full opacity-100 group-hover:opacity-80 transition-opacity duration-300" />
-                    
-                    {/* 2. O container branco para fazer o "gap" */}
-                    <div className="relative p-[2px] rounded-full">
-                        {/* 3. A Imagem */}
-                        <img 
-                            src={profile.img} 
-                            alt={profile.name} 
-                            className="w-16 h-16 rounded-full object-cover shadow-sm group-hover:scale-105 transition-transform duration-300" 
-                        />
-                    </div>
-                </a>
+
+                                    {/* 1. O Anel Gradiente de fundo */}
+                                    <div className="absolute -inset-0.5 bg-gradient-to-tr from-yellow-400 to-orange-500 rounded-full opacity-100 group-hover:opacity-80 transition-opacity duration-300" />
+
+                                    {/* 2. O container branco para fazer o "gap" */}
+                                    <div className="relative p-[2px] rounded-full">
+                                        {/* 3. A Imagem */}
+                                        <img
+                                            src={profile.img}
+                                            alt={profile.name}
+                                            className="w-16 h-16 rounded-full object-cover shadow-sm group-hover:scale-105 transition-transform duration-300"
+                                        />
+                                    </div>
+                                </a>
                                 <div>
                                     {/* Nome em Destaque (Bold) */}
                                     <h3 className="text-xl font-bold text-brand-blue flex items-center justify-center md:justify-start gap-1">

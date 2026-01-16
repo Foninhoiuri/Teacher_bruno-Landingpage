@@ -4,7 +4,7 @@ import { CheckCircle2, Globe2 } from "lucide-react";
 export function Translation() {
     return (
         <section className="py-24 bg-white overflow-hidden" id="traducao">
-            <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
                 {/* Image Composition */}
                 <motion.div

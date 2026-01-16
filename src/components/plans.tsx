@@ -47,12 +47,12 @@ export function Plans() { // Keeping component name 'Services' for compatibility
                     </h2>
 
                     {/* Toggle */}
-                    <div className="flex items-center bg-slate-100 p-1.5 rounded-full">
+                    <div className="flex flex-wrap items-center justify-center bg-slate-100 p-1.5 rounded-3xl md:rounded-full">
                         {["Mensal", "Anual", "Personalizado"].map((cycle) => (
                             <button
                                 key={cycle}
                                 onClick={() => setBillingCycle(cycle)}
-                                className={`px-6 py-2 rounded-full text-sm font-bold transition-all ${billingCycle === cycle
+                                className={`px-4 md:px-6 py-2 rounded-full text-xs md:text-sm font-bold transition-all ${billingCycle === cycle
                                     ? "bg-brand-blue text-white shadow-md"
                                     : "text-slate-500 hover:text-brand-blue"
                                     }`}
@@ -63,7 +63,7 @@ export function Plans() { // Keeping component name 'Services' for compatibility
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {PLANS.map((plan, idx) => (
                         <motion.div
                             key={idx}

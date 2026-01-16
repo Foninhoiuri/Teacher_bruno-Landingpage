@@ -22,11 +22,15 @@
   body {
     @apply bg-white text-brand-blue antialiased;
   }
+
+  button {
+    @apply cursor-pointer;
+  }
 }
 
 @layer components {
   /* ... (seus outros componentes mantidos iguais) ... */
-  
+
   /* Efeito Hover "Highlight" */
   .hover-card-effect {
     @apply transition-all duration-300;
@@ -57,10 +61,10 @@
   .btn-brand-yellow-effect {
     /* MUDANÇA: Usamos color-mix para pegar 30% da cor e 70% de transparência */
     --btn-color: color-mix(in srgb, var(--color-brand-white) 30%, transparent);
-    
+
     background-color: var(--btn-color);
     color: var(--color-brand-blue);
-    
+
     /* Nota: box-shadow também precisa usar a cor diluída se quiser o efeito suave */
     box-shadow: 0 10px 25px -10px var(--btn-color);
     transition: all 0.3s ease-out;
@@ -68,12 +72,12 @@
 
   .btn-brand-yellow-effect:hover {
     transform: translateY(-2px);
-    
+
     /* No hover, redefine a variável para a cor sólida original */
     --btn-color: var(--color-brand-yellow);
-    
+
     color: var(--color-brand-white);
-    
+
     /* Aqui mantivemos o shadow fixo que você já tinha */
     box-shadow: 0 20px 25px -5px rgba(234, 179, 8, 0.4), 0 8px 10px -6px rgba(234, 179, 8, 0.4);
   }

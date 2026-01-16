@@ -3,7 +3,7 @@ import { Facebook, Instagram, Linkedin } from "lucide-react";
 
 export function Footer() {
     return (
-        <footer className="relative bg-slate-950 text-white pt-24 pb-12 mt-32">
+        <footer className="relative bg-slate-950 text-white pt-24 pb-12 mt-48 md:mt-32">
             {/* OVERLAPPING CTA CARD */}
             <div className="absolute -top-24 left-0 right-0 px-6">
                 <div className="max-w-5xl mx-auto bg-brand-yellow rounded-3xl p-8 md:p-12 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left relative overflow-hidden">

@@ -16,7 +16,7 @@ function App() {
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-brand-blue overflow-x-hidden selection:bg-brand-yellow/30">
       <Navbar />
-      <main className="pt-20 lg:pt-6">
+      <main className="pt-20 lg:pt-8">
         <section id="home">
           <Hero />
         </section>
@@ -27,7 +27,7 @@ function App() {
           <AboutMe />
         </section>
 
-        <GlobalReach />
+        
 
         <section id="challenges">
           <Challenges />
@@ -40,6 +40,8 @@ function App() {
         <section id="business">
           <BusinessEnglish />
         </section>
+
+        <GlobalReach />
 
         <section id="testimonials">
           <Testimonials />

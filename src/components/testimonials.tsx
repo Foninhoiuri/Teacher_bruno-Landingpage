@@ -55,19 +55,19 @@ export function Testimonials() {
                 </div>
 
                 <div className="relative max-w-5xl mx-auto">
-                    {/* Navigation Buttons */}
-                    <div className="absolute top-1/2 -left-4 md:-left-16 -translate-y-1/2 z-10">
+                    {/* Navigation Buttons (Desktop: Absolute / Mobile: Hidden) */}
+                    <div className="hidden md:block absolute top-1/2 -left-16 -translate-y-1/2 z-10">
                         <button
                             onClick={prevReview}
-                            className="p-4 bg-brand-blue text-white rounded-full hover:bg-slate-700 transition-colors shadow-lg"
+                            className="p-4 bg-brand-blue text-white rounded-full hover:bg-slate-700 transition-colors shadow-lg cursor-pointer"
                         >
                             <ArrowLeft className="w-5 h-5" />
                         </button>
                     </div>
-                    <div className="absolute top-1/2 -right-4 md:-right-16 -translate-y-1/2 z-10">
+                    <div className="hidden md:block absolute top-1/2 -right-16 -translate-y-1/2 z-10">
                         <button
                             onClick={nextReview}
-                            className="p-4 bg-brand-blue text-white rounded-full hover:bg-slate-700 transition-colors shadow-lg"
+                            className="p-4 bg-brand-blue text-white rounded-full hover:bg-slate-700 transition-colors shadow-lg cursor-pointer"
                         >
                             <ArrowRight className="w-5 h-5" />
                         </button>
@@ -81,10 +81,10 @@ export function Testimonials() {
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: -50 }}
                             transition={{ duration: 0.4 }}
-                            className="bg-white rounded-[2.5rem] p-4 md:p-6 shadow-xl flex flex-col md:flex-row gap-6 md:gap-10 items-stretch"
+                            className="bg-white rounded-[2rem] md:rounded-[2.5rem] p-5 md:p-6 shadow-xl flex flex-col md:flex-row gap-6 md:gap-10 items-stretch"
                         >
                             {/* Image Left */}
-                            <div className="w-full md:w-1/3 aspect-[3/4] md:aspect-auto rounded-[2rem] overflow-hidden relative">
+                            <div className="w-full md:w-1/3 aspect-[4/3] md:aspect-auto rounded-[1.5rem] md:rounded-[2rem] overflow-hidden relative">
                                 <img
                                     src={REVIEWS[activeIndex].image}
                                     alt={REVIEWS[activeIndex].name}
@@ -93,14 +93,14 @@ export function Testimonials() {
                             </div>
 
                             {/* Content Right */}
-                            <div className="flex-1 flex flex-col justify-center py-4 pr-4">
-                                <div className="flex gap-1 mb-6">
+                            <div className="flex-1 flex flex-col justify-center py-2 md:py-4 pr-0 md:pr-4">
+                                <div className="flex gap-1 mb-4 md:mb-6">
                                     {[1, 2, 3, 4, 5].map(i => (
-                                        <Star key={i} className="w-6 h-6 text-brand-yellow fill-brand-yellow" />
+                                        <Star key={i} className="w-5 h-5 md:w-6 md:h-6 text-brand-yellow fill-brand-yellow" />
                                     ))}
                                 </div>
 
-                                <blockquote className="text-xl md:text-2xl font-medium text-brand-blue leading-relaxed mb-8">
+                                <blockquote className="text-lg md:text-2xl font-medium text-brand-blue leading-relaxed mb-6 md:mb-8">
                                     "{REVIEWS[activeIndex].text}"
                                 </blockquote>
 
@@ -111,6 +111,22 @@ export function Testimonials() {
                             </div>
 
                         </motion.div>
+                    </div>
+
+                    {/* Navigation Buttons (Mobile: Bottom Flex) */}
+                    <div className="flex md:hidden justify-center gap-4 mt-8">
+                        <button
+                            onClick={prevReview}
+                            className="p-4 bg-white text-brand-blue border border-slate-100 rounded-full hover:bg-slate-50 transition-colors shadow-md cursor-pointer"
+                        >
+                            <ArrowLeft className="w-5 h-5" />
+                        </button>
+                        <button
+                            onClick={nextReview}
+                            className="p-4 bg-brand-blue text-white rounded-full hover:bg-slate-700 transition-colors shadow-lg cursor-pointer"
+                        >
+                            <ArrowRight className="w-5 h-5" />
+                        </button>
                     </div>
                 </div>
 
