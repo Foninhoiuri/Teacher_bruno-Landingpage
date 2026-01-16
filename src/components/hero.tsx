@@ -9,7 +9,7 @@ export function Hero() {
             {/* Background Decor (Geral) */}
             <div className="absolute top-0 right-0 w-[45%] h-full bg-white/50 rounded-l-[100px] -z-10 hidden lg:block backdrop-blur-3xl" />
 
-            <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center relative">
+            <div className="max-w-7xl mx-auto px-8 md:px-12 lg:px-24 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-12 items-center relative">
 
                 {/* Left Column: Text */}
                 <motion.div
