@@ -106,7 +106,7 @@ function InstaCard({ post }: { post: any }) {
 export function InstagramFeed() {
     const controls = useAnimation();
 
-    const [profile, setProfile] = useState<any>(null);
+    const [profile, setProfile] = useState<any>(FALLBACK_PROFILE);
     const [posts, setPosts] = useState<any[]>([]);
     const [loadingPosts, setLoadingPosts] = useState(true);
 
@@ -130,14 +130,20 @@ export function InstagramFeed() {
                     if (data.followers) {
                         setProfile({
                             ...data,
+                            // Garante que o link esteja correto e HTTPS
                             link: `https://www.instagram.com/${data.username?.replace('@', '')}/`
                         });
                         return;
                     }
                 }
-                throw new Error("Dados inválidos ou erro na API");
+                // Se chegou aqui, resposta não foi ideal, mas não é erro crítico.
+                // Podemos lançar erro para cair no catch ou apenas não atualizar.
+                // Mas para garantir que tentamos validar:
+                throw new Error("Dados inválidos ou incompletos da API");
             } catch (error) {
-                console.error("Erro ao carregar perfil (usando fallback):", error);
+                console.error("Erro ao carregar perfil (mantendo fallback):", error);
+                // Não precisamos fazer nada pois o estado inicial já é o fallback.
+                // Mas se quisermos garantir:
                 setProfile(FALLBACK_PROFILE);
             }
         }
