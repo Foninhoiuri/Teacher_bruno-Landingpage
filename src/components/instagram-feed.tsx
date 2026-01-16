@@ -11,38 +11,27 @@ const FALLBACK_PROFILE = {
     username: "@teacher.brunofernandes",
     name: "Teacher Bruno Fernandes",
     img: "/AboutMe.jpg",
-    followers: "452k",
-    posts: "1.2k",
+    followers: "1.580",
+    posts: "340",
     link: "https://www.instagram.com/teacher.brunofernandes/"
 };
 
-// Dados Estáticos dos Reels
-const REELS = [
-    {
-        id: "DSIpOKeEVDZ",
-        likes: "856",
-        comments: "32",
-        caption: "Como destravar sua fala em reuniões internacionais. 💬"
-    },
-    {
-        id: "DRaimGlERcB",
-        likes: "2.1k",
-        comments: "120",
-        caption: "Dica rápida de pronúncia para impressionar! ✨ #pronuncia"
-    },
-    {
-        id: "DRWse8_kYO3",
-        likes: "945",
-        comments: "28",
-        caption: "Vocabulário essencial para Tech Recruiters. 💻"
-    },
-    {
-        id: "DQq3moWkaEh",
-        likes: "1.5k",
-        comments: "55",
-        caption: "Pare de traduzir mentalmente! Pense em inglês. 🧠"
-    }
-];
+// Carregar vídeos dinamicamente de src/assets/videos
+// A chave é o caminho, o valor é a URL final do asset (gerenciada pelo Vite)
+const videoModules = import.meta.glob('../assets/videos/*.mp4', { eager: true, as: 'url' });
+
+// Transformar em array estruturado
+const REELS = Object.entries(videoModules).map(([path, url]) => {
+    // Extrair ID do nome do arquivo (ex: ../assets/videos/ABCD.mp4 -> ABCD)
+    const fileName = path.split('/').pop() || "";
+    const id = fileName.replace('.mp4', '');
+
+    return {
+        id,
+        videoUrl: url,
+        link: `https://www.instagram.com/teacher.brunofernandes/reel/${id}/`
+    };
+});
 
 // --- COMPONENTE CARD ---
 function InstaCard({ post }: { post: any }) {
@@ -107,12 +96,8 @@ export function InstagramFeed() {
 
     const [profile, setProfile] = useState<any>(FALLBACK_PROFILE);
 
-    // Preparar os posts (Estáticos + Loop Infinito)
-    const basePosts = REELS.map(reel => ({
-        ...reel,
-        videoUrl: `/Instagram/videos/${reel.id}.mp4`,
-        link: `https://www.instagram.com/teacher.brunofernandes/reel/${reel.id}`
-    }));
+    // Preparar os posts (Dinâmicos + Loop Infinito)
+    const basePosts = REELS;
 
     // Multiplicamos para garantir o loop infinito suave em telas grandes
     const displayPosts = [...basePosts, ...basePosts, ...basePosts, ...basePosts];
