@@ -2,13 +2,9 @@
 
 import { useRef, useEffect, useState } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
-import { Instagram, Heart, MessageCircle, ExternalLink, VolumeX, CheckCircle2, Loader2 } from "lucide-react";
+import { Instagram, Heart, MessageCircle, ExternalLink, VolumeX, CheckCircle2 } from "lucide-react";
 
 // --- CONFIGURAÇÃO ---
-// Se você estiver usando arquivos locais para teste, a estrutura CORRETA é esta:
-// 1. Arquivo deve estar em: seu-projeto/public/Instagram/videos/nome-do-video.mp4
-// 2. No código usamos apenas: /Instagram/videos/nome-do-video.mp4
-
 const WEBHOOK_PROFILE = "https://n8n.igoriurialves.com.br/webhook/instagram-profile";
 
 const FALLBACK_PROFILE = {
@@ -19,6 +15,34 @@ const FALLBACK_PROFILE = {
     posts: "1.2k",
     link: "https://www.instagram.com/teacher.brunofernandes/"
 };
+
+// Dados Estáticos dos Reels
+const REELS = [
+    {
+        id: "DSIpOKeEVDZ",
+        likes: "856",
+        comments: "32",
+        caption: "Como destravar sua fala em reuniões internacionais. 💬"
+    },
+    {
+        id: "DRaimGlERcB",
+        likes: "2.1k",
+        comments: "120",
+        caption: "Dica rápida de pronúncia para impressionar! ✨ #pronuncia"
+    },
+    {
+        id: "DRWse8_kYO3",
+        likes: "945",
+        comments: "28",
+        caption: "Vocabulário essencial para Tech Recruiters. 💻"
+    },
+    {
+        id: "DQq3moWkaEh",
+        likes: "1.5k",
+        comments: "55",
+        caption: "Pare de traduzir mentalmente! Pense em inglês. 🧠"
+    }
+];
 
 // --- COMPONENTE CARD ---
 function InstaCard({ post }: { post: any }) {
@@ -48,11 +72,6 @@ function InstaCard({ post }: { post: any }) {
     // Se o vídeo deu erro (404 ou formato inválido), remove o card da tela
     if (isBroken) return null;
 
-    // Correção de segurança para caminhos locais vindos do n8n
-    // Se o n8n mandar "public/videos/...", nós removemos o "public" automaticamente aqui
-    const cleanVideoUrl = post.videoUrl?.replace('public/', '/').replace(/\\/g, '/');
-    const cleanThumbnail = post.thumbnail?.replace('public/', '/').replace(/\\/g, '/');
-
     return (
         <a
             href={post.link}
@@ -63,8 +82,7 @@ function InstaCard({ post }: { post: any }) {
         >
             <video
                 ref={videoRef}
-                src={cleanVideoUrl}
-                poster={cleanThumbnail}
+                src={post.videoUrl}
                 muted
                 loop
                 playsInline
@@ -107,20 +125,26 @@ export function InstagramFeed() {
     const controls = useAnimation();
 
     const [profile, setProfile] = useState<any>(FALLBACK_PROFILE);
-    const [posts, setPosts] = useState<any[]>([]);
-    const [loadingPosts, setLoadingPosts] = useState(true);
+
+    // Preparar os posts (Estáticos + Loop Infinito)
+    const basePosts = REELS.map(reel => ({
+        ...reel,
+        videoUrl: `/Instagram/videos/${reel.id}.mp4`,
+        link: `https://www.instagram.com/teacher.brunofernandes/reel/${reel.id}`
+    }));
+
+    // Multiplicamos para garantir o loop infinito suave em telas grandes
+    const displayPosts = [...basePosts, ...basePosts, ...basePosts, ...basePosts];
 
     // Animação Carrossel
     useEffect(() => {
-        if (posts.length > 0) {
-            controls.start({
-                x: "-50%",
-                transition: { ease: "linear", duration: 120, repeat: Infinity }
-            });
-        }
-    }, [controls, posts]);
+        controls.start({
+            x: "-50%",
+            transition: { ease: "linear", duration: 120, repeat: Infinity }
+        });
+    }, [controls]);
 
-    // 1. Fetch PERFIL
+    // 1. Fetch PERFIL (Opcional, mantém info atualizada do perfil)
     useEffect(() => {
         async function fetchProfile() {
             try {
@@ -136,72 +160,14 @@ export function InstagramFeed() {
                         return;
                     }
                 }
-                // Se chegou aqui, resposta não foi ideal, mas não é erro crítico.
-                // Podemos lançar erro para cair no catch ou apenas não atualizar.
-                // Mas para garantir que tentamos validar:
                 throw new Error("Dados inválidos ou incompletos da API");
             } catch (error) {
                 console.error("Erro ao carregar perfil (mantendo fallback):", error);
                 // Não precisamos fazer nada pois o estado inicial já é o fallback.
-                // Mas se quisermos garantir:
-                setProfile(FALLBACK_PROFILE);
+                setProfile(FALLBACK_PROFILE); // Redundante mas seguro
             }
         }
         fetchProfile();
-    }, []);
-
-    // 2. Fetch POSTS (Usando Dados Locais para garantir carregamento dos vídeos)
-    useEffect(() => {
-        async function fetchPosts() {
-            try {
-                // Dados estáticos baseados nos vídeos disponíveis em /public/videos
-                const STATIC_POSTS = [
-                    {
-                        id: "DSIpOKeEVDZ",
-                        videoUrl: "/Instagram/videos/DSIpOKeEVDZ.mp4",
-                        likes: "856",
-                        comments: "32",
-                        caption: "Como destravar sua fala em reuniões internacionais. 💬",
-                        link: "https://www.instagram.com/teacher.brunofernandes/reel/DSIpOKeEVDZ/"
-                    },
-                    {
-                        id: "DRaimGlERcB",
-                        videoUrl: "/Instagram/videos/DRaimGlERcB.mp4",
-                        likes: "2.1k",
-                        comments: "120",
-                        caption: "Dica rápida de pronúncia para impressionar! ✨ #pronuncia",
-                        link: "https://www.instagram.com/teacher.brunofernandes/reel/DRaimGlERcB/"
-                    },
-                    {
-                        id: "DRWse8_kYO3",
-                        videoUrl: "/Instagram/videos/DRWse8_kYO3.mp4",
-                        likes: "945",
-                        comments: "28",
-                        caption: "Vocabulário essencial para Tech Recruiters. 💻",
-                        link: "https://www.instagram.com/teacher.brunofernandes/reel/DRWse8_kYO3/"
-                    },
-                    {
-                        id: "DQq3moWkaEh",
-                        videoUrl: "/Instagram/videos/DQq3moWkaEh.mp4",
-                        likes: "1.5k",
-                        comments: "55",
-                        caption: "Pare de traduzir mentalmente! Pense em inglês. 🧠",
-                        link: "https://www.instagram.com/teacher.brunofernandes/"
-                    }
-                ];
-
-                // Simula delay de rede para UX
-                await new Promise(resolve => setTimeout(resolve, 800));
-
-                // Duplica para loop infinito do carrossel (4x para garantir smooth on large screens)
-                setPosts([...STATIC_POSTS, ...STATIC_POSTS, ...STATIC_POSTS, ...STATIC_POSTS]);
-            } catch (error) {
-                console.error("Erro ao carregar posts:", error);
-            } finally {
-                setLoadingPosts(false);
-            }
-        }
-        fetchPosts();
     }, []);
 
     return (
@@ -246,6 +212,7 @@ export function InstagramFeed() {
                         </div>
                     </div>
                 ) : (
+                    /* Fallback nunca deve acontecer pois inicializamos com dados */
                     <div className="max-w-4xl mx-auto h-32 bg-slate-200/50 rounded-[2.5rem] animate-pulse" />
                 )}
             </div>
@@ -255,20 +222,13 @@ export function InstagramFeed() {
                 <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-slate-50 to-transparent z-10 pointer-events-none" />
                 <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-slate-50 to-transparent z-10 pointer-events-none" />
 
-                {loadingPosts ? (
-                    <div className="flex flex-col items-center justify-center h-[450px] w-full gap-3 text-slate-400">
-                        <Loader2 className="w-8 h-8 animate-spin text-brand-yellow" />
-                        <span className="text-sm font-medium">Carregando reels...</span>
-                    </div>
-                ) : (
-                    <div className="flex overflow-hidden" onMouseEnter={() => controls.stop()} onMouseLeave={() => controls.start({ x: "-50%", transition: { ease: "linear", duration: 120, repeat: Infinity } })}>
-                        <motion.div className="flex" animate={controls}>
-                            {posts.map((post, index) => (
-                                <InstaCard key={`${post.id}-${index}`} post={post} />
-                            ))}
-                        </motion.div>
-                    </div>
-                )}
+                <div className="flex overflow-hidden" onMouseEnter={() => controls.stop()} onMouseLeave={() => controls.start({ x: "-50%", transition: { ease: "linear", duration: 120, repeat: Infinity } })}>
+                    <motion.div className="flex" animate={controls}>
+                        {displayPosts.map((post, index) => (
+                            <InstaCard key={`${post.id}-${index}`} post={post} />
+                        ))}
+                    </motion.div>
+                </div>
             </div>
         </section>
     );
