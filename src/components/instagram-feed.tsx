@@ -106,7 +106,7 @@ function InstaCard({ post }: { post: any }) {
 export function InstagramFeed() {
     const controls = useAnimation();
 
-    const [profile, setProfile] = useState<any>(FALLBACK_PROFILE);
+    const [profile, setProfile] = useState<any>(null);
     const [posts, setPosts] = useState<any[]>([]);
     const [loadingPosts, setLoadingPosts] = useState(true);
 
@@ -132,11 +132,13 @@ export function InstagramFeed() {
                             ...data,
                             link: `https://www.instagram.com/${data.username?.replace('@', '')}/`
                         });
+                        return;
                     }
                 }
+                throw new Error("Dados inválidos ou erro na API");
             } catch (error) {
                 console.error("Erro ao carregar perfil (usando fallback):", error);
-                // Fallback já está no estado inicial
+                setProfile(FALLBACK_PROFILE);
             }
         }
         fetchProfile();
