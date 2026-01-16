@@ -65,7 +65,7 @@ function InstaCard({ post }: { post: any }) {
             target="_blank"
             rel="noopener noreferrer"
             ref={containerRef}
-            className="relative flex-shrink-0 w-64 md:w-72 aspect-[9/16] rounded-3xl overflow-hidden group bg-black border border-slate-100 shadow-md cursor-pointer"
+            className="relative flex-shrink-0 w-64 md:w-72 aspect-[9/16] rounded-3xl overflow-hidden group bg-black border border-slate-100 shadow-md cursor-pointer mr-6"
         >
             <video
                 ref={videoRef}
@@ -121,7 +121,7 @@ export function InstagramFeed() {
         if (posts.length > 0) {
             controls.start({
                 x: "-50%",
-                transition: { ease: "linear", duration: 60, repeat: Infinity }
+                transition: { ease: "linear", duration: 120, repeat: Infinity }
             });
         }
     }, [controls, posts]);
@@ -198,8 +198,8 @@ export function InstagramFeed() {
                 // Simula delay de rede para UX
                 await new Promise(resolve => setTimeout(resolve, 800));
 
-                // Duplica para loop infinito do carrossel
-                setPosts([...STATIC_POSTS, ...STATIC_POSTS]);
+                // Duplica para loop infinito do carrossel (4x para garantir smooth on large screens)
+                setPosts([...STATIC_POSTS, ...STATIC_POSTS, ...STATIC_POSTS, ...STATIC_POSTS]);
             } catch (error) {
                 console.error("Erro ao carregar posts:", error);
             } finally {
@@ -266,8 +266,8 @@ export function InstagramFeed() {
                         <span className="text-sm font-medium">Carregando reels...</span>
                     </div>
                 ) : (
-                    <div className="flex overflow-hidden" onMouseEnter={() => controls.stop()} onMouseLeave={() => controls.start({ x: "-50%", transition: { ease: "linear", duration: 60, repeat: Infinity } })}>
-                        <motion.div className="flex gap-6 px-6" animate={controls}>
+                    <div className="flex overflow-hidden" onMouseEnter={() => controls.stop()} onMouseLeave={() => controls.start({ x: "-50%", transition: { ease: "linear", duration: 120, repeat: Infinity } })}>
+                        <motion.div className="flex" animate={controls}>
                             {posts.map((post, index) => (
                                 <InstaCard key={`${post.id}-${index}`} post={post} />
                             ))}
