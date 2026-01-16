@@ -77,20 +77,4 @@
     /* Aqui mantivemos o shadow fixo que você já tinha */
     box-shadow: 0 20px 25px -5px rgba(234, 179, 8, 0.4), 0 8px 10px -6px rgba(234, 179, 8, 0.4);
   }
-
-  /* Efeito de Vidro Reutilizável */
-  .glass-card-effect {
-    /* Cor de fundo com opacidade (white/60) */
-    background-color: rgb(255 255 255 / 0.6);
-    
-    /* O desfoque do fundo (backdrop-blur-xl) */
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px); /* Safari support */
-    
-    /* Borda sutil (border-white/50) */
-    border: 1px solid rgb(255 255 255 / 0.5);
-    
-    /* Sombra colorida (shadow-xl + shadow-slate-200/50) */
-    box-shadow: 0 20px 25px -5px rgb(226 232 240 / 0.5), 0 8px 10px -6px rgb(226 232 240 / 0.5);
-  }
 }
