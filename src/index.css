@@ -6,6 +6,7 @@
   --color-brand-blue: #0f172a;
   --color-whatsapp: #25D366;
   --color-whatsapp-hover: #20BD5A;
+  --color-green: #24d665;
 
   /* Add custom slate-950 if needed or rely on default */
   --color-slate-950: #020617;
@@ -38,6 +39,15 @@
 
   /* Efeito Botão WhatsApp */
   .btn-whatsapp-effect {
-    @apply bg-whatsapp text-white transition-all shadow-md hover:bg-whatsapp-hover hover:shadow-lg hover:-translate-y-0.5;
+    --btn-color: var(--color-green);
+    background-color: var(--btn-color);
+    color: white;
+    box-shadow: 0 10px 25px -10px var(--btn-color);
+    transition: all 0.3s ease-out;
+  }
+
+  .btn-whatsapp-effect:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 35px -10px var(--btn-color);
   }
 }
