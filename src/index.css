@@ -4,6 +4,8 @@
   --color-brand-yellow: #EAB308;
   --color-brand-dark: #CA8A04;
   --color-brand-blue: #0f172a;
+  --color-brand-gray: #1f2937;
+  --color-brand-white: #ffffff;
   --color-whatsapp: #25D366;
   --color-whatsapp-hover: #20BD5A;
   --color-green: #24d665;
@@ -58,15 +60,30 @@
 
   /* Efeito Botão Amarelo (Brand) */
   .btn-brand-yellow-effect {
-    --btn-color: var(--color-brand-yellow);
+    --btn-color: var(--color-brand-white)/50;
     background-color: var(--btn-color);
     color: var(--color-brand-blue);
     box-shadow: 0 10px 25px -10px var(--btn-color);
     transition: all 0.3s ease-out;
+    border-color: var(--color-brand-yellow);
+    border-width: 1.5px;
+  }
+
+   .btn-brand-yellow-effect-two {
+    --btn-color: var(--color-brand-yellow)/30;
+    background-color: var(--btn-color);
+    color: var(--color-brand-blue);
+    box-shadow: 0 10px 25px -10px var(--btn-color);
+    transition: all 0.3s ease-out;
+    border-color: var(--color-brand-yellow);
+    border-width: 1.5px;
   }
 
   .btn-brand-yellow-effect:hover {
     transform: translateY(-2px);
-    box-shadow: 0 14px 35px -10px var(--btn-color);
+    border-width: none;
+    --btn-color: var(--color-brand-yellow);
+    color: var(--color-brand-white);
+    box-shadow: 0 20px 25px -5px rgba(234, 179, 8, 0.4), 0 8px 10px -6px rgba(234, 179, 8, 0.4);
   }
 }

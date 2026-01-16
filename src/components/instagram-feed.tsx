@@ -80,8 +80,8 @@ function InstaCard({ post }: { post: any }) {
             />
 
             {/* OVERLAY LIMPO - APENAS BOTÃO NO HOVER */}
-            <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-20">
-                <div className="px-6 py-3 rounded-full text-xs font-bold flex items-center gap-2 transform scale-90 group-hover:scale-100 btn-brand-yellow-effect">
+            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-20">
+                <div className="px-6 py-3 rounded-full text-xs font-bold flex items-center gap-2 transform scale-90 group-hover:scale-100 btn-brand-yellow-effect-two group-hover:btn-brand-yellow-effect:hover">
                     <Instagram className="w-4 h-4" />
                     Ver no Instagram
                 </div>
@@ -138,11 +138,25 @@ export function InstagramFeed() {
 
     return (
         <section className="py-24 bg-slate-50 overflow-hidden" id="instagram">
-            <div className="max-w-7xl mx-auto px-6 mb-16">
 
-                {/* HEADER DO PERFIL */}
+            {/* CARROSSEL */}
+            <div className="w-full relative min-h-[450px]">
+                <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-slate-50 to-transparent z-10 pointer-events-none" />
+                <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-slate-50 to-transparent z-10 pointer-events-none" />
+
+                <div className="flex overflow-hidden" onMouseEnter={() => controls.stop()} onMouseLeave={() => controls.start({ x: "-50%", transition: { ease: "linear", duration: 120, repeat: Infinity } })}>
+                    <motion.div className="flex" animate={controls}>
+                        {displayPosts.map((post, index) => (
+                            <InstaCard key={`${post.id}-${index}`} post={post} />
+                        ))}
+                    </motion.div>
+                </div>
+            </div>
+
+            {/* HEADER DO PERFIL (Glass & Overlapping) */}
+            <div className="max-w-7xl mx-auto px-6 relative z-20 -mt-24">
                 {profile ? (
-                    <div className="bg-white p-4 md:p-6 rounded-[2.5rem] shadow-xl shadow-slate-200/50 border border-slate-100 max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-700">
+                    <div className="bg-white/60 backdrop-blur-xl p-4 md:p-6 rounded-[2.5rem] shadow-xl shadow-slate-200/50 border border-white/50 max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-700">
                         <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
                             <div className="flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
                                 <a href={profile.link} target="_blank" rel="noreferrer" className="relative group cursor-pointer hover:scale-105 transition-transform">
@@ -158,16 +172,16 @@ export function InstagramFeed() {
                                 </div>
                             </div>
 
-                            <div className="hidden md:block w-px h-12 bg-slate-100" />
+                            <div className="hidden md:block w-px h-12 bg-slate-400/20" />
 
                             <div className="flex gap-8 text-center">
                                 <div>
                                     <span className="block text-xl font-bold text-brand-blue">{profile.followers}</span>
-                                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Seguidores</span>
+                                    <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Seguidores</span>
                                 </div>
                                 <div>
                                     <span className="block text-xl font-bold text-brand-blue">{profile.posts}</span>
-                                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Posts</span>
+                                    <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Posts</span>
                                 </div>
                             </div>
 
@@ -179,22 +193,8 @@ export function InstagramFeed() {
                     </div>
                 ) : (
                     /* Fallback nunca deve acontecer pois inicializamos com dados */
-                    <div className="max-w-4xl mx-auto h-32 bg-slate-200/50 rounded-[2.5rem] animate-pulse" />
+                    <div className="max-w-4xl mx-auto h-32 bg-white/20 backdrop-blur-md rounded-[2.5rem] animate-pulse" />
                 )}
-            </div>
-
-            {/* CARROSSEL */}
-            <div className="w-full relative min-h-[450px]">
-                <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-slate-50 to-transparent z-10 pointer-events-none" />
-                <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-slate-50 to-transparent z-10 pointer-events-none" />
-
-                <div className="flex overflow-hidden" onMouseEnter={() => controls.stop()} onMouseLeave={() => controls.start({ x: "-50%", transition: { ease: "linear", duration: 120, repeat: Infinity } })}>
-                    <motion.div className="flex" animate={controls}>
-                        {displayPosts.map((post, index) => (
-                            <InstaCard key={`${post.id}-${index}`} post={post} />
-                        ))}
-                    </motion.div>
-                </div>
             </div>
         </section>
     );
