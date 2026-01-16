@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown, UserCircle } from "lucide-react";
+import { Menu, X, ChevronDown, UserCircle, Sun, Moon } from "lucide-react";
 
 
 const NAV_LINKS = [
@@ -21,6 +21,35 @@ const FLAGS = {
 export function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [lang, setLang] = useState<"BR" | "US">("BR");
+    const [isDark, setIsDark] = useState(false);
+
+    useEffect(() => {
+        // Check system preference or saved value on mount
+        const saved = localStorage.getItem("theme");
+        const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+        if (saved === "dark" || (!saved && systemDark)) {
+            setIsDark(true);
+            document.documentElement.classList.add("dark");
+        } else {
+            setIsDark(false);
+            document.documentElement.classList.remove("dark");
+        }
+    }, []);
+
+    const toggleTheme = () => {
+        setIsDark(prev => {
+            const newDark = !prev;
+            if (newDark) {
+                document.documentElement.classList.add("dark");
+                localStorage.setItem("theme", "dark");
+            } else {
+                document.documentElement.classList.remove("dark");
+                localStorage.setItem("theme", "light");
+            }
+            return newDark;
+        });
+    };
 
     const toggleLang = () => setLang(prev => prev === "BR" ? "US" : "BR");
 
@@ -63,6 +92,15 @@ export function Navbar() {
 
                 {/* 3. AÇÕES (DIREITA) */}
                 <div className="hidden lg:flex items-center gap-3">
+
+                    {/* Theme Toggle */}
+                    <button
+                        onClick={toggleTheme}
+                        className="p-2 text-slate-500 hover:text-brand-blue hover:bg-slate-50 rounded-full transition-colors mr-2"
+                        title="Alternar Tema"
+                    >
+                        {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+                    </button>
 
                     {/* --- TOGGLE IDIOMA (Container Ajustado) --- */}
                     <button
@@ -135,13 +173,21 @@ export function Navbar() {
 
                             {/* Idioma Mobile (Também ajustado) */}
                             <div className="flex items-center justify-between px-2">
-                                <span className="text-sm font-medium text-slate-500">Idioma:</span>
+                                <div className="flex items-center gap-4">
+                                    <span className="text-sm font-medium text-slate-500">Idioma:</span>
+                                    <button
+                                        onClick={toggleLang}
+                                        className="flex items-center gap-2 px-3 py-2 bg-slate-50 border border-slate-200 rounded-full"
+                                    >
+                                        <img src={FLAGS[lang]} alt={lang} className="w-5 h-5 rounded-full" />
+                                        <span className="text-sm font-bold text-brand-blue">{lang}</span>
+                                    </button>
+                                </div>
                                 <button
-                                    onClick={toggleLang}
-                                    className="flex items-center gap-2 px-3 py-2 bg-slate-50 border border-slate-200 rounded-full"
+                                    onClick={toggleTheme}
+                                    className="p-2 text-slate-500 hover:text-brand-blue hover:bg-slate-50 rounded-full transition-colors"
                                 >
-                                    <img src={FLAGS[lang]} alt={lang} className="w-5 h-5 rounded-full" />
-                                    <span className="text-sm font-bold text-brand-blue">{lang}</span>
+                                    {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
                                 </button>
                             </div>
 
