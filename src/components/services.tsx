@@ -71,27 +71,28 @@ export function Services() { // Keeping component name 'Services' for compatibil
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: idx * 0.1 }}
-                            className={`relative flex flex-col p-8 rounded-[2rem] border border-slate-100 hover:border-brand-yellow hover:shadow-xl transition-all ${plan.highlight ? "shadow-2xl scale-105 z-10" : "shadow-lg bg-white"
-                                }`}
+                            className={`group relative flex flex-col p-8 rounded-[2rem] border border-slate-100 bg-white transition-all duration-300
+                                ${plan.highlight ? "shadow-xl scale-105 z-10 border-brand-yellow" : "shadow-lg"}
+                                hover:-translate-y-2 hover:shadow-xl hover:bg-brand-yellow hover:border-transparent hover:shadow-brand-yellow/40`}
                         >
                             {plan.highlight && (
-                                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-yellow text-slate-900 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wide shadow-sm">
+                                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-900 text-brand-yellow px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wide shadow-sm z-20">
                                     {plan.tag}
                                 </div>
                             )}
 
                             <div className="mb-8">
-                                <h3 className="text-lg font-bold text-slate-500 mb-4">{plan.name}</h3>
+                                <h3 className="text-lg font-bold text-slate-500 mb-4 group-hover:text-slate-900 transition-colors">{plan.name}</h3>
                                 <div className="flex items-baseline gap-1">
                                     <span className="text-5xl font-bold text-slate-900 tracking-tight">{plan.price}</span>
-                                    <span className="text-slate-400 font-medium">{plan.period}</span>
+                                    <span className="text-slate-400 font-medium group-hover:text-slate-800 transition-colors">{plan.period}</span>
                                 </div>
                             </div>
 
                             <ul className="flex-1 space-y-4 mb-8">
                                 {plan.features.map((feature, i) => (
-                                    <li key={i} className="flex items-start gap-3 text-slate-600 text-sm font-medium">
-                                        <div className="mt-0.5 w-5 h-5 bg-brand-yellow/10 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <li key={i} className="flex items-start gap-3 text-slate-600 text-sm font-medium group-hover:text-slate-900 transition-colors">
+                                        <div className="mt-0.5 w-5 h-5 bg-brand-yellow/10 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-white/30 transition-colors">
                                             <Check className="w-3 h-3 text-brand-dark" />
                                         </div>
                                         {feature}
@@ -99,10 +100,9 @@ export function Services() { // Keeping component name 'Services' for compatibil
                                 ))}
                             </ul>
 
-                            <button className={`w-full py-4 rounded-full font-bold text-sm transition-all ${plan.highlight
-                                ? "bg-slate-900 text-white hover:bg-slate-800 shadow-lg"
-                                : "bg-white border-2 border-slate-100 text-slate-900 hover:border-slate-900"
-                                }`}>
+                            <button className={`w-full py-4 rounded-full font-bold text-sm transition-all flex items-center justify-center gap-2
+                                bg-white border border-slate-200 text-slate-700 shadow-sm
+                                group-hover:bg-slate-900 group-hover:text-white group-hover:border-transparent`}>
                                 Escolher Plano
                             </button>
                         </motion.div>
