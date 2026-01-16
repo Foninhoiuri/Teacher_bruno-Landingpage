@@ -20,14 +20,16 @@ function App() {
       <Navbar />
       <main className="pt-20">
         <Hero />
-        <AboutMe />
-        <PainPoints />
-        <Translation />
-        <GlobalMap />
-        <BusinessSkills />
-        <SocialProof />
         <InstagramFeed />
+        <AboutMe />
+        <GlobalMap />
+        <PainPoints />
+             
+        <BusinessSkills />
+        
+        <SocialProof />
         <Services />
+        <Translation />   
         <FAQ />
       </main>
       <Footer />

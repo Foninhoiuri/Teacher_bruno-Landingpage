@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, MessageCircle, UserCircle } from "lucide-react";
-import { ParticleGlobe } from "./ui/particle-globe";
+
 
 const NAV_LINKS = [
     { name: "Metodologia", href: "#metodologia" },
@@ -34,7 +34,7 @@ export function Navbar() {
 
                 {/* 1. LOGO */}
                 <div className="flex items-center gap-3">
-                    <ParticleGlobe className="w-9 h-9 text-brand-yellow" />
+                    <img src="/logo.png" alt="Teacher Bruno Logo" className="w-9 h-9 object-contain" />
                     <div className="flex flex-col">
                         <span className="text-lg font-extrabold tracking-tight text-slate-900 leading-none">
                             Teacher Bruno
@@ -52,8 +52,8 @@ export function Navbar() {
                             key={link.name}
                             href={link.href}
                             className={`px-5 py-2 text-sm font-medium rounded-full transition-all duration-200 ${link.active
-                                    ? "bg-white text-slate-900 shadow-sm font-bold"
-                                    : "text-slate-500 hover:text-slate-900 hover:bg-white/50"
+                                ? "bg-white text-slate-900 shadow-sm font-bold"
+                                : "text-slate-500 hover:text-slate-900 hover:bg-white/50"
                                 }`}
                         >
                             {link.name}
@@ -122,8 +122,8 @@ export function Navbar() {
                                     href={link.href}
                                     onClick={() => setIsOpen(false)}
                                     className={`px-4 py-3 text-base font-medium rounded-xl ${link.active
-                                            ? "bg-slate-100 text-slate-900 font-bold"
-                                            : "text-slate-600 hover:bg-slate-50"
+                                        ? "bg-slate-100 text-slate-900 font-bold"
+                                        : "text-slate-600 hover:bg-slate-50"
                                         }`}
                                 >
                                     {link.name}

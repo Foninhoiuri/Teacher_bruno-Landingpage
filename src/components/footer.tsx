@@ -1,5 +1,5 @@
 import { Facebook, Instagram, Linkedin, MessageCircle } from "lucide-react";
-import { ParticleGlobe } from "./ui/particle-globe";
+
 
 export function Footer() {
     return (
@@ -31,7 +31,7 @@ export function Footer() {
                     {/* Column 1: Brand */}
                     <div className="col-span-1 md:col-span-1">
                         <div className="flex items-center gap-2 mb-6">
-                            <ParticleGlobe className="w-8 h-8" />
+                            <img src="/logo.png" alt="Teacher Bruno Logo" className="w-8 h-8 object-contain" />
                             <span className="text-xl font-bold">Teacher Bruno</span>
                         </div>
                         <p className="text-slate-400 text-sm mb-6">
