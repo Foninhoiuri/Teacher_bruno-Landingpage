@@ -5,11 +5,10 @@ import { ArrowRight } from "lucide-react";
 
 export function Hero() {
     return (
-        <section className="relative w-full min-h-[600px] lg:min-h-[700px] flex items-center bg-slate-50 overflow-hidden py-12 lg:py-16">
+        <section className="relative w-full min-h-[600px] lg:min-h-[700px] flex items-center bg-slate-50 overflow-hidden py-4 lg:py-2">
             {/* Background Decor (Geral) */}
             <div className="absolute top-0 right-0 w-[45%] h-full bg-white/50 rounded-l-[100px] -z-10 hidden lg:block backdrop-blur-3xl" />
 
-            {/* AJUSTE 1: Reduzi o padding lateral (lg:px-24 -> lg:px-10) para diminuir o gap das bordas */}
             <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center relative">
 
                 {/* Left Column: Text */}
@@ -35,7 +34,7 @@ export function Hero() {
                         Inglês sem enrolação e Tradução Profissional. Zero decoreba, foco total na prática e conversação real.
                     </p>
 
-                    {/* AJUSTE 2: Movi os Botões para CIMA das avaliações */}
+                    {/* Botões */}
                     <div className="flex flex-col sm:flex-row gap-4 mt-2">
                         <button className="flex items-center justify-center gap-2 px-8 py-4 bg-brand-yellow text-brand-blue font-bold text-md rounded-full hover:brightness-90 transition-all shadow-lg shadow-brand-yellow/20 hover:shadow-xl hover:-translate-y-0.5">
                             Destravar meu Inglês
@@ -46,20 +45,6 @@ export function Hero() {
                         </button>
                     </div>
 
-                    {/* AJUSTE 3: Avaliações agora ficam abaixo, alinhadas à esquerda (sem px-6) e mais discretas */}
-                    <div className="flex items-center gap-4 mt-4">
-                        <div className="flex -space-x-3">
-                            {[1, 2, 3, 4].map(i => (
-                                <img key={i} src={`https://randomuser.me/api/portraits/men/${i * 10}.jpg`} alt="Student" className="w-10 h-10 rounded-full border-2 border-white object-cover" />
-                            ))}
-                        </div>
-                        <div className="flex flex-col">
-                            <div className="flex items-center gap-0.5">
-                                {[1, 2, 3, 4, 5].map(i => <span key={i} className="text-brand-yellow text-sm">★</span>)}
-                            </div>
-                            <span className="text-xs font-semibold text-slate-500">+500 alunos satisfeitos</span>
-                        </div>
-                    </div>
 
                 </motion.div>
 
@@ -82,16 +67,17 @@ export function Hero() {
                         <img
                             src="/Hero_image.png"
                             alt="Teacher Bruno Teaching"
-                            className="w-full max-w-md lg:max-w-xl h-auto object-contain drop-shadow-2xl"
+                            className="w-full max-w-md lg:max-w-xl h-auto object-contain drop-shadow-2xl [mask-image:linear-gradient(to_bottom,black_60%,transparent)]"
                         />
                     </div>
 
-                    {/* Floating Card 1 */}
+                    {/* Floating Card 1 (Conversação) - Topo Direito */}
                     <motion.div
                         initial={{ y: -20, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ delay: 0.5 }}
-                        className="absolute top-10 right-15 bg-white p-3 pr-5 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.12)] flex items-center gap-3 z-20"
+                        // AJUSTE: scale-[0.75] no mobile, origin-top-right para encolher pro canto
+                        className="absolute top-4 right-0 md:top-10 md:right-15 bg-white p-3 pr-5 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.12)] flex items-center gap-3 z-20 scale-[0.75] md:scale-100 origin-top-right"
                     >
                         <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="w-5 h-5" viewBox="0 0 16 16">
@@ -104,12 +90,13 @@ export function Hero() {
                         </div>
                     </motion.div>
 
-                    {/* Floating Card 2 */}
+                    {/* Floating Card 2 (Personalizado) - Base Esquerda */}
                     <motion.div
                         initial={{ y: 20, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ delay: 0.7 }}
-                        className="absolute bottom-12 left-4 bg-white p-3 pr-5 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.12)] flex items-center gap-3 z-20"
+                        // AJUSTE: scale-[0.75], colado no bottom-0 left-0 no mobile para não subir na foto
+                        className="absolute bottom-0 left-0 md:bottom-12 md:left-4 bg-white p-3 pr-5 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.12)] flex items-center gap-3 z-20 scale-[0.75] md:scale-100 origin-bottom-left"
                     >
                         <div className="w-10 h-10 bg-brand-yellow/10 rounded-full flex items-center justify-center text-brand-yellow">
                             <span className="font-bold text-sm">100%</span>
@@ -120,12 +107,14 @@ export function Hero() {
                         </div>
                     </motion.div>
 
-                    {/* Floating Card 3 (Reviews) */}
+                    {/* Floating Card 3 (Reviews) - Lateral Direita */}
                     <motion.div
                         initial={{ scale: 0.8, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{ delay: 0.9 }}
-                        className="absolute top-1/2 -right-8 -translate-y-1/2 bg-white p-3 pr-5 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.12)] flex items-center gap-4 z-20"
+                        // AJUSTE CRÍTICO: No mobile (padrão) vai para bottom-28 (embaixo da foto mas acima do card 2)
+                        // No desktop (md:) volta para o meio (top-1/2)
+                        className="absolute bottom-28 -right-4 md:bottom-auto md:top-1/2 md:-right-8 md:-translate-y-1/2 bg-white p-3 pr-5 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.12)] flex items-center gap-4 z-20 scale-[0.75] md:scale-100 origin-right"
                     >
                         <div className="flex -space-x-3">
                             {[1, 2, 3].map(i => (

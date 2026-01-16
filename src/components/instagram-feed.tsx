@@ -151,8 +151,8 @@ export function InstagramFeed() {
             {/* --- PARTE 1: O CARROSSEL DE VÍDEOS --- */}
             <div className="w-full relative min-h-[450px]">
                 {/* Degradês laterais para suavizar a entrada/saída */}
-                <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-slate-50 to-transparent z-10 pointer-events-none" />
-                <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-slate-50 to-transparent z-10 pointer-events-none" />
+                <div className="absolute left-0 top-0 bottom-0 w-15 md:w-60 bg-gradient-to-r from-slate-50 to-transparent z-10 pointer-events-none" />
+                <div className="absolute right-0 top-0 bottom-0 w-15 md:w-60 bg-gradient-to-l from-slate-50 to-transparent z-10 pointer-events-none" />
 
                 {/* Container da Animação */}
                 <div 
@@ -170,7 +170,7 @@ export function InstagramFeed() {
             </div>
 
             {/* --- PARTE 2: O HEADER DO PERFIL (Efeito Vidro) --- */}
-            <div className="max-w-7xl mx-auto px-6 relative z-20 -mt-24">
+            <div className="max-w-7xl mx-auto px-6 relative z-20 -mt-16">
                 {profile ? (
                     // Card com efeito Glassmorphism (Vidro)
                     <div className="bg-white/55 backdrop-blur-xl p-4 md:p-6 rounded-[2.5rem] shadow-xl shadow-slate-200/50 border border-white/35 max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-700">
@@ -178,11 +178,21 @@ export function InstagramFeed() {
                             
                             {/* Bloco 1: Foto e Nome */}
                             <div className="flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
-                                <a href={profile.link} target="_blank" rel="noreferrer" className="relative group cursor-pointer hover:scale-105 transition-transform">
-                                    {/* Borda Colorida (Gradiente) atrás da foto */}
-                                    <div className="absolute -inset-1 bg-gradient-to-tr from-yellow-400 to-orange-500 rounded-full opacity-70 group-hover:opacity-100 transition-opacity blur-sm" />
-                                    <img src={profile.img} alt={profile.name} className="relative w-20 h-20 rounded-full border-4 border-white object-cover shadow-sm" />
-                                </a>
+                                <a href={profile.link} target="_blank" rel="noreferrer" className="group relative block cursor-pointer">
+                                    
+                    {/* 1. O Anel Gradiente de fundo */}
+                    <div className="absolute -inset-0.5 bg-gradient-to-tr from-yellow-400 to-orange-500 rounded-full opacity-100 group-hover:opacity-80 transition-opacity duration-300" />
+                    
+                    {/* 2. O container branco para fazer o "gap" */}
+                    <div className="relative p-[2px] rounded-full">
+                        {/* 3. A Imagem */}
+                        <img 
+                            src={profile.img} 
+                            alt={profile.name} 
+                            className="w-16 h-16 rounded-full object-cover shadow-sm group-hover:scale-105 transition-transform duration-300" 
+                        />
+                    </div>
+                </a>
                                 <div>
                                     {/* Nome em Destaque (Bold) */}
                                     <h3 className="text-xl font-bold text-brand-blue flex items-center justify-center md:justify-start gap-1">
