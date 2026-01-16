@@ -2,26 +2,14 @@
 
 import { useRef, useEffect, useState } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
-import { Instagram, Heart, MessageCircle, ExternalLink, Play, VolumeX, CheckCircle2, Loader2 } from "lucide-react";
+import { Instagram, Heart, MessageCircle, ExternalLink, VolumeX, CheckCircle2, Loader2 } from "lucide-react";
 
 // --- CONFIGURAÇÃO ---
 // Se você estiver usando arquivos locais para teste, a estrutura CORRETA é esta:
 // 1. Arquivo deve estar em: seu-projeto/public/videos/nome-do-video.mp4
 // 2. No código usamos apenas: /videos/nome-do-video.mp4
 
-const LINKS_TO_FETCH = [
-    "https://www.instagram.com/teacher.brunofernandes/reel/DSdLlIpkeRz/?hl=pt-br",
-    "https://www.instagram.com/teacher.brunofernandes/reel/DSXWQxskSy6/?hl=pt-br",
-    "https://www.instagram.com/teacher.brunofernandes/reel/DSIpOKeEVDZ/?hl=pt-br",
-    "https://www.instagram.com/teacher.brunofernandes/reel/DRaimGlERcB/?hl=pt-br",
-    "https://www.instagram.com/teacher.brunofernandes/reel/DRWse8_kYO3/?hl=pt-br",
-    "https://www.instagram.com/teacher.brunofernandes/reel/DRUryVVkayy/?hl=pt-br",
-    "https://www.instagram.com/teacher.brunofernandes/reel/DQwdxNDkX5q/?hl=pt-br",
-    "https://www.instagram.com/teacher.brunofernandes/reel/DQuNaqXCDsF/?hl=pt-br"
-];
-
 const WEBHOOK_PROFILE = "https://n8n.igoriurialves.com.br/webhook/instagram-profile";
-const WEBHOOK_POSTS = "https://n8n.igoriurialves.com.br/webhook/instagram-reels-list";
 
 // --- COMPONENTE CARD ---
 function InstaCard({ post }: { post: any }) {
@@ -30,7 +18,6 @@ function InstaCard({ post }: { post: any }) {
     const isInCenter = useInView(containerRef, { margin: "0px -15% 0px -15%" });
 
     // Estados
-    const [isPlaying, setIsPlaying] = useState(false);
     const [isBroken, setIsBroken] = useState(false);
 
     useEffect(() => {
@@ -43,11 +30,9 @@ function InstaCard({ post }: { post: any }) {
                     // Autoplay bloqueado pelo navegador, normal
                 });
             }
-            setIsPlaying(true);
         } else {
             videoRef.current.pause();
             videoRef.current.currentTime = 0;
-            setIsPlaying(false);
         }
     }, [isInCenter, isBroken]);
 
@@ -79,7 +64,7 @@ function InstaCard({ post }: { post: any }) {
             />
 
             <div className="absolute top-3 right-3 bg-black/50 p-1.5 rounded-full backdrop-blur-sm z-10">
-                {isPlaying ? <VolumeX className="w-4 h-4 text-white" /> : <Play className="w-4 h-4 text-white" />}
+                <VolumeX className="w-4 h-4 text-white" />
             </div>
 
             <div className="absolute top-3 left-3 bg-black/50 px-2 py-0.5 rounded-md backdrop-blur-sm z-10">
