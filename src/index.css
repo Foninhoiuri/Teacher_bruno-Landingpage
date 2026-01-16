@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-yellow: #EAB308;
+  --color-brand-DEFAULT: #EAB308;
+  --color-brand-dark: #CA8A04;
+  --color-whatsapp: #25D366;
+  --color-whatsapp-hover: #20BD5A;
+
+  /* Add custom slate-950 if needed or rely on default */
+  --color-slate-950: #020617;
+
+  /* Fonts */
+  --font-sans: 'Inter', sans-serif;
+
+  /* Border Radius */
+  --radius-3xl: 1.5rem;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-slate-900 antialiased;
+  }
+}
