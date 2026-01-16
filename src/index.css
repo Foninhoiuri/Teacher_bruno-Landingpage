@@ -26,3 +26,18 @@
     @apply bg-white text-brand-blue antialiased;
   }
 }
+
+@layer components {
+
+  /* Efeito Hover "Highlight" (PainPoints/Services) */
+  .hover-card-effect {
+    @apply transition-all duration-300;
+    @apply hover:-translate-y-2 hover:shadow-xl hover:bg-brand-yellow hover:border-transparent hover:shadow-brand-yellow/40;
+    /* Optional text color changes handled in children or via group-hover */
+  }
+
+  /* Efeito Botão WhatsApp */
+  .btn-whatsapp-effect {
+    @apply bg-whatsapp text-white transition-all shadow-md hover:bg-whatsapp-hover hover:shadow-lg hover:-translate-y-0.5;
+  }
+}
