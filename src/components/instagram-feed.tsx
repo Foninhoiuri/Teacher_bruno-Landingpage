@@ -6,8 +6,8 @@ import { Instagram, Heart, MessageCircle, ExternalLink, VolumeX, CheckCircle2, L
 
 // --- CONFIGURAÇÃO ---
 // Se você estiver usando arquivos locais para teste, a estrutura CORRETA é esta:
-// 1. Arquivo deve estar em: seu-projeto/public/videos/nome-do-video.mp4
-// 2. No código usamos apenas: /videos/nome-do-video.mp4
+// 1. Arquivo deve estar em: seu-projeto/public/Instagram/videos/nome-do-video.mp4
+// 2. No código usamos apenas: /Instagram/videos/nome-do-video.mp4
 
 const WEBHOOK_PROFILE = "https://n8n.igoriurialves.com.br/webhook/instagram-profile";
 
@@ -140,7 +140,7 @@ export function InstagramFeed() {
                 const STATIC_POSTS = [
                     {
                         id: "DSIpOKeEVDZ",
-                        videoUrl: "/videos/DSIpOKeEVDZ.mp4",
+                        videoUrl: "/Instagram/videos/DSIpOKeEVDZ.mp4",
                         likes: "856",
                         comments: "32",
                         caption: "Como destravar sua fala em reuniões internacionais. 💬",
@@ -148,7 +148,7 @@ export function InstagramFeed() {
                     },
                     {
                         id: "DRaimGlERcB",
-                        videoUrl: "/videos/DRaimGlERcB.mp4",
+                        videoUrl: "/Instagram/videos/DRaimGlERcB.mp4",
                         likes: "2.1k",
                         comments: "120",
                         caption: "Dica rápida de pronúncia para impressionar! ✨ #pronuncia",
@@ -156,7 +156,7 @@ export function InstagramFeed() {
                     },
                     {
                         id: "DRWse8_kYO3",
-                        videoUrl: "/videos/DRWse8_kYO3.mp4",
+                        videoUrl: "/Instagram/videos/DRWse8_kYO3.mp4",
                         likes: "945",
                         comments: "28",
                         caption: "Vocabulário essencial para Tech Recruiters. 💻",
@@ -164,7 +164,7 @@ export function InstagramFeed() {
                     },
                     {
                         id: "DQq3moWkaEh",
-                        videoUrl: "/videos/DQq3moWkaEh.mp4",
+                        videoUrl: "/Instagram/videos/DQq3moWkaEh.mp4",
                         likes: "1.5k",
                         comments: "55",
                         caption: "Pare de traduzir mentalmente! Pense em inglês. 🧠",

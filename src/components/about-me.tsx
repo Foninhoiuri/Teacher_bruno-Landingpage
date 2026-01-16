@@ -7,7 +7,7 @@ export function AboutMe() {
     return (
         <section className="relative w-full py-24 bg-white overflow-hidden" id="sobre">
             <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-                
+
                 {/* COLUNA 1: IMAGEM (Esquerda) */}
                 <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
@@ -21,9 +21,9 @@ export function AboutMe() {
 
                     {/* Container da Imagem */}
                     <div className="relative w-full max-w-[500px] aspect-square rounded-[2rem] overflow-hidden border-2 border-slate-100 shadow-xl bg-slate-200">
-                        <img 
-                            src="/images/104172207_138420751155517_4127487188450559636_n.jpg" 
-                            alt="Teacher Bruno Fernandes" 
+                        <img
+                            src="/Instagram/images/104172207_138420751155517_4127487188450559636_n.jpg"
+                            alt="Teacher Bruno Fernandes"
                             className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                         />
                     </div>
@@ -65,18 +65,18 @@ export function AboutMe() {
 
                     {/* Destaques */}
                     <div className="flex flex-col sm:flex-row gap-6 mt-4">
-                         <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-2">
                             <div className="bg-brand-yellow/10 p-1 rounded-full">
                                 <CheckCircle2 className="w-5 h-5 text-brand-yellow" />
                             </div>
                             <span className="text-sm font-bold text-slate-700">Experiência Real</span>
-                         </div>
-                         <div className="flex items-center gap-2">
+                        </div>
+                        <div className="flex items-center gap-2">
                             <div className="bg-brand-yellow/10 p-1 rounded-full">
                                 <CheckCircle2 className="w-5 h-5 text-brand-yellow" />
                             </div>
                             <span className="text-sm font-bold text-slate-700">Método Exclusivo</span>
-                         </div>
+                        </div>
                     </div>
 
                 </motion.div>

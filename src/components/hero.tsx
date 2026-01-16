@@ -82,7 +82,7 @@ export function Hero() {
                     {/* Main Image */}
                     <div className="relative z-10">
                         <img
-                            src="/images/564992873_18532296142025046_6418191898915879318_n-removebg-preview.png"
+                            src="/Hero_image.png"
                             alt="Teacher Bruno Teaching"
                             className="w-full max-w-md lg:max-w-xl h-auto object-contain drop-shadow-2xl"
                         />

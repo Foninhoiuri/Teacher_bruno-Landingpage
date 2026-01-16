@@ -7,13 +7,10 @@ import { GlobalMap } from "./components/global-map";
 import { SocialProof } from "./components/social-proof";
 import { Footer } from "./components/footer";
 import { FAQ } from "./components/faq";
-
 import { AboutMe } from "./components/about-me";
-
 import { InstagramFeed } from "./components/instagram-feed";
-
-import { Translation } from "./components/translation";
 import { Methodology } from "./components/methodology";
+import { Translation } from "./components/translation";
 
 function App() {
   return (
@@ -25,9 +22,9 @@ function App() {
         <AboutMe />
         <GlobalMap />
         <PainPoints />
-
-        <BusinessSkills />
         <Methodology />
+        <BusinessSkills />
+        
 
         <SocialProof />
         <Services />
