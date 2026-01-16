@@ -11,6 +11,15 @@ import { Instagram, Heart, MessageCircle, ExternalLink, VolumeX, CheckCircle2, L
 
 const WEBHOOK_PROFILE = "https://n8n.igoriurialves.com.br/webhook/instagram-profile";
 
+const FALLBACK_PROFILE = {
+    username: "@teacher.brunofernandes",
+    name: "Teacher Bruno Fernandes",
+    img: "/AboutMe.jpg",
+    followers: "452k",
+    posts: "1.2k",
+    link: "https://www.instagram.com/teacher.brunofernandes/"
+};
+
 // --- COMPONENTE CARD ---
 function InstaCard({ post }: { post: any }) {
     const videoRef = useRef<HTMLVideoElement>(null);
@@ -97,7 +106,7 @@ function InstaCard({ post }: { post: any }) {
 export function InstagramFeed() {
     const controls = useAnimation();
 
-    const [profile, setProfile] = useState<any>(null);
+    const [profile, setProfile] = useState<any>(FALLBACK_PROFILE);
     const [posts, setPosts] = useState<any[]>([]);
     const [loadingPosts, setLoadingPosts] = useState(true);
 
@@ -126,7 +135,8 @@ export function InstagramFeed() {
                     }
                 }
             } catch (error) {
-                console.error("Erro ao carregar perfil:", error);
+                console.error("Erro ao carregar perfil (usando fallback):", error);
+                // Fallback já está no estado inicial
             }
         }
         fetchProfile();
