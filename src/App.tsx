@@ -1,10 +1,10 @@
 import { Navbar } from "./components/navbar";
 import { Hero } from "./components/hero";
-import { PainPoints } from "./components/pain-points";
-import { Services } from "./components/services";
-import { BusinessSkills } from "./components/business-skills";
-import { GlobalMap } from "./components/global-map";
-import { SocialProof } from "./components/social-proof";
+import { Challenges } from "./components/challenges"; // Renamed from PainPoints
+import { Plans } from "./components/plans"; // Renamed from Services
+import { BusinessEnglish } from "./components/business-english"; // Renamed from BusinessSkills
+import { GlobalReach } from "./components/global-reach"; // Renamed from GlobalMap
+import { Testimonials } from "./components/testimonials"; // Renamed from SocialProof
 import { Footer } from "./components/footer";
 import { FAQ } from "./components/faq";
 import { AboutMe } from "./components/about-me";
@@ -17,19 +17,45 @@ function App() {
     <div className="min-h-screen bg-slate-50 font-sans text-brand-blue overflow-x-hidden selection:bg-brand-yellow/30">
       <Navbar />
       <main className="pt-20">
-        <Hero />
-        <InstagramFeed />
-        <AboutMe />
-        <GlobalMap />
-        <PainPoints />
-        <Methodology />
-        <BusinessSkills />
-        
+        <section id="home">
+          <Hero />
+        </section>
 
-        <SocialProof />
-        <Services />
-        <Translation />
-        <FAQ />
+        <InstagramFeed />
+
+        <section id="about">
+          <AboutMe />
+        </section>
+
+        <GlobalReach />
+
+        <section id="challenges">
+          <Challenges />
+        </section>
+
+        <section id="methodology">
+          <Methodology />
+        </section>
+
+        <section id="business">
+          <BusinessEnglish />
+        </section>
+
+        <section id="testimonials">
+          <Testimonials />
+        </section>
+
+        <section id="plans">
+          <Plans />
+        </section>
+
+        <section id="translation">
+          <Translation />
+        </section>
+
+        <section id="faq">
+          <FAQ />
+        </section>
       </main>
       <Footer />
     </div>

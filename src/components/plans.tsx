@@ -30,7 +30,7 @@ const PLANS = [
     }
 ];
 
-export function Services() { // Keeping component name 'Services' for compatibility
+export function Plans() { // Keeping component name 'Services' for compatibility
     const [billingCycle, setBillingCycle] = useState("Mensal");
 
     return (

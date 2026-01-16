@@ -1,15 +1,16 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown, UserCircle, Sun, Moon } from "lucide-react";
+import { Menu, X, ChevronDown, UserCircle } from "lucide-react";
 
 
 const NAV_LINKS = [
-    { name: "Metodologia", href: "#metodologia" },
-    { name: "Aulas", href: "#aulas", active: true },
-    { name: "Tradução", href: "#traducao" },
-    { name: "Dicas", href: "#dicas" },
+    { name: "Sobre", href: "#about" },
+    { name: "Metodologia", href: "#methodology" },
+    { name: "Aulas", href: "#plans", active: true },
+    { name: "Business", href: "#business" },
+    { name: "Tradução", href: "#translation" },
 ];
 
 // URLs ajustadas para tamanho 24px
@@ -21,35 +22,6 @@ const FLAGS = {
 export function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [lang, setLang] = useState<"BR" | "US">("BR");
-    const [isDark, setIsDark] = useState(false);
-
-    useEffect(() => {
-        // Check system preference or saved value on mount
-        const saved = localStorage.getItem("theme");
-        const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-        if (saved === "dark" || (!saved && systemDark)) {
-            setIsDark(true);
-            document.documentElement.classList.add("dark");
-        } else {
-            setIsDark(false);
-            document.documentElement.classList.remove("dark");
-        }
-    }, []);
-
-    const toggleTheme = () => {
-        setIsDark(prev => {
-            const newDark = !prev;
-            if (newDark) {
-                document.documentElement.classList.add("dark");
-                localStorage.setItem("theme", "dark");
-            } else {
-                document.documentElement.classList.remove("dark");
-                localStorage.setItem("theme", "light");
-            }
-            return newDark;
-        });
-    };
 
     const toggleLang = () => setLang(prev => prev === "BR" ? "US" : "BR");
 
@@ -57,7 +29,7 @@ export function Navbar() {
         <motion.nav
             initial={{ y: -100 }}
             animate={{ y: 0 }}
-            className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-100 dark:border-slate-800 transition-colors duration-300"
+            className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100 transition-colors duration-300"
         >
             <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
 

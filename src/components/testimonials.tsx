@@ -29,7 +29,7 @@ const REVIEWS = [
     }
 ];
 
-export function SocialProof() {
+export function Testimonials() {
     const [activeIndex, setActiveIndex] = useState(0);
 
     const nextReview = () => {

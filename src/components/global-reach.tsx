@@ -32,7 +32,7 @@ const LOCATIONS: Location[] = [
     { id: 20, lat: -9.6662, lng: -35.7351 }, // Maceio
 ];
 
-export function GlobalMap() {
+export function GlobalReach() {
     const mapSvg = useMemo(() => {
         const map = new DottedMap({ height: 60, grid: "diagonal" });
 
