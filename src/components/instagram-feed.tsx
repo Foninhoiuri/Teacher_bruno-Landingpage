@@ -139,14 +139,6 @@ export function InstagramFeed() {
                 // Dados estáticos baseados nos vídeos disponíveis em /public/videos
                 const STATIC_POSTS = [
                     {
-                        id: "DSXWQxskSy6",
-                        videoUrl: "/videos/DSXWQxskSy6.mp4",
-                        likes: "1.2k",
-                        comments: "45",
-                        caption: "Inglês para negócios não precisa ser chato! 🚀 #businessenglish",
-                        link: "https://www.instagram.com/teacher.brunofernandes/reel/DSXWQxskSy6/"
-                    },
-                    {
                         id: "DSIpOKeEVDZ",
                         videoUrl: "/videos/DSIpOKeEVDZ.mp4",
                         likes: "856",
