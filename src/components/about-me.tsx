@@ -22,7 +22,7 @@ export function AboutMe() {
                     {/* Container da Imagem */}
                     <div className="relative w-full max-w-[500px] aspect-square rounded-[2rem] overflow-hidden border-2 border-slate-100 shadow-xl bg-slate-200">
                         <img
-                            src="/Instagram/images/104172207_138420751155517_4127487188450559636_n.jpg"
+                            src="/AboutMe.jpg"
                             alt="Teacher Bruno Fernandes"
                             className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                         />

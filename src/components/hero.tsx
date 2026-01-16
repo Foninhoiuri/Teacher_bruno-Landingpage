@@ -5,7 +5,7 @@ import { ArrowRight, MessageCircle } from "lucide-react";
 
 export function Hero() {
     return (
-        <section className="relative w-full min-h-[85vh] flex items-center bg-slate-50 overflow-hidden py-20 lg:py-0">
+        <section className="relative w-full min-h-[600px] lg:min-h-[700px] flex items-center bg-slate-50 overflow-hidden py-24 lg:py-32">
             {/* Background Decor (Geral) */}
             <div className="absolute top-0 right-0 w-[45%] h-full bg-white/50 rounded-l-[100px] -z-10 hidden lg:block backdrop-blur-3xl" />
 
