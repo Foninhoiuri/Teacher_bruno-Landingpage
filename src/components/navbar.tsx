@@ -25,6 +25,23 @@ export function Navbar() {
 
     const toggleLang = () => setLang(prev => prev === "BR" ? "US" : "BR");
 
+    const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+        e.preventDefault();
+        const targetId = href.replace("#", "");
+        const element = document.getElementById(targetId);
+        if (element) {
+            const headerOffset = 100; // 80px navbar + 20px breathing room
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth"
+            });
+        }
+        setIsOpen(false);
+    };
+
     return (
         <motion.nav
             initial={{ y: -100 }}
@@ -35,16 +52,13 @@ export function Navbar() {
 
                 {/* 1. LOGO & IDIOMA */}
                 <div className="flex items-center gap-6">
-                    <div className="flex items-center gap-3">
-                        <img src="/logo.png" alt="Teacher Bruno Logo" className="w-9 h-9 object-contain" />
-                        <div className="flex flex-col">
-                            <span className="text-lg font-extrabold tracking-tight text-brand-blue leading-none">
-                                Teacher Bruno
-                            </span>
-                            <span className="text-lg font-bold text-slate-400  leading-none text-center">
-                                Fernandes
-                            </span>
-                        </div>
+                    <div className="flex flex-col">
+                        <span className="text-lg font-extrabold tracking-tight text-brand-blue leading-none">
+                            Teacher Bruno
+                        </span>
+                        <span className="text-lg font-bold text-slate-400  leading-none text-center">
+                            Fernandes
+                        </span>
                     </div>
 
                     {/* --- TOGGLE IDIOMA (Moved) --- */}
@@ -74,6 +88,7 @@ export function Navbar() {
                         <a
                             key={link.name}
                             href={link.href}
+                            onClick={(e) => handleScroll(e, link.href)}
                             className={`px-5 py-2 text-sm font-medium rounded-full transition-all duration-200 ${link.active
                                 ? "bg-white text-brand-blue shadow-sm font-bold"
                                 : "text-slate-500 hover:text-brand-blue hover:bg-white/50"
@@ -125,7 +140,7 @@ export function Navbar() {
                                 <a
                                     key={link.name}
                                     href={link.href}
-                                    onClick={() => setIsOpen(false)}
+                                    onClick={(e) => handleScroll(e, link.href)}
                                     className={`px-4 py-3 text-base font-medium rounded-xl ${link.active
                                         ? "bg-slate-100 text-brand-blue font-bold"
                                         : "text-slate-600 hover:bg-slate-50"
