@@ -1,0 +1,154 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-yellow: #EAB308;
+  --color-brand-dark: #CA8A04;
+  --color-brand-blue: #0f172a;
+  --color-brand-gray: #1f2937;
+  --color-brand-white: #ffffff;
+  --color-whatsapp: #25D366;
+  --color-whatsapp-hover: #20BD5A;
+  --color-green: #24d665;
+  --color-slate-950: #020617;
+  --font-sans: 'Inter', sans-serif;
+  --radius-3xl: 1.5rem;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    /* Firefox */
+  }
+
+  /* Hide Scrollbar for Chrome, Safari and Opera */
+  html::-webkit-scrollbar {
+    display: none;
+  }
+
+  body {
+    @apply bg-white text-brand-blue antialiased;
+    overflow-x: hidden;
+  }
+
+  button {
+    @apply cursor-pointer;
+  }
+
+  button:focus-visible {
+    outline: 2px solid var(--color-brand-yellow);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* ... (seus outros componentes mantidos iguais) ... */
+
+  /* Efeito Hover "Highlight" */
+  .hover-card-effect {
+    @apply transition-all duration-300;
+  }
+
+  .hover-card-effect:hover {
+    transform: translateY(-0.5rem);
+    background-color: var(--color-brand-yellow);
+    border-color: transparent;
+    box-shadow: 0 20px 25px -5px rgba(234, 179, 8, 0.4), 0 8px 10px -6px rgba(234, 179, 8, 0.4);
+  }
+
+  /* Shared Button Animations */
+  .btn-yellow,
+  .btn-green,
+  .btn-green-solid,
+  .btn-yellow-solid,
+  .btn-clean {
+    transition: all 0.3s ease-out;
+    box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.1);
+    border: none;
+  }
+
+  .btn-yellow:hover,
+  .btn-green:hover,
+  .btn-green-solid:hover,
+  .btn-yellow-solid:hover {
+    transform: translateY(-2px);
+    border-color: transparent;
+  }
+
+  /* Efeito Botão Clean (Ex: Hero Secondary) */
+  .btn-clean {
+    background-color: white;
+    color: var(--color-brand-gray);
+  }
+
+  .btn-clean:hover {
+    background-color: var(--color-brand-blue);
+    color: white;
+    box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.4), 0 8px 10px -6px rgba(15, 23, 42, 0.4);
+  }
+
+  /* Efeito Botão Amarelo */
+  .btn-yellow {
+    --btn-color: color-mix(in srgb, var(--color-brand-white) 30%, transparent);
+    background-color: var(--btn-color);
+    border: 1px solid var(--color-brand-yellow);
+    color: var(--color-brand-yellow);
+  }
+
+  .btn-yellow:hover {
+    --btn-color: var(--color-brand-yellow);
+    background-color: var(--btn-color);
+    border-color: transparent;
+    color: var(--color-brand-white);
+    box-shadow: 0 20px 25px -5px rgba(234, 179, 8, 0.4), 0 8px 10px -6px rgba(234, 179, 8, 0.4);
+  }
+
+  .btn-yellow-solid {
+    --btn-color: var(--color-brand-yellow);
+    background-color: var(--btn-color);
+    color: var(--color-brand-white);
+  }
+
+  .btn-yellow-solid:hover {
+    /* Opcional: clarear ou escurecer no hover? Mantendo consistente com o btn-yellow:hover */
+    box-shadow: 0 20px 25px -5px rgba(234, 179, 8, 0.4), 0 8px 10px -6px rgba(234, 179, 8, 0.4);
+  }
+
+  /* Efeito Botão WhatsApp (Nav/Cards) */
+  .btn-green {
+    --btn-color: color-mix(in srgb, var(--color-brand-white) 30%, transparent);
+    background-color: var(--btn-color);
+    color: var(--color-whatsapp);
+    border: 1px solid var(--color-whatsapp);
+  }
+
+  .btn-green:hover {
+    --btn-color: var(--color-whatsapp);
+    background-color: var(--btn-color);
+    border-color: transparent;
+    color: white;
+
+    box-shadow: 0 20px 25px -5px rgba(37, 211, 102, 0.4), 0 8px 10px -6px rgba(37, 211, 102, 0.4);
+  }
+
+  /* Efeito Botão Verde Sólido (CTA Plans) */
+  .btn-green-solid {
+    --btn-color: var(--color-whatsapp);
+    /* Sólido desde o início */
+    background-color: var(--btn-color);
+    color: white;
+
+    /* Sombras similares ao hover, mas já no estado inicial ou levemente menores? 
+       O user disse "mantem a cor de nohover nele o verd, ai ele so vai ter a animaçao" */
+  }
+
+  .btn-green-solid:hover {
+    /* Mantém a mesma cor, ou clareia levemente? Normalmente o hover do btn-green é o --color-whatsapp. 
+       Então aqui mantemos igual, ou usamos o whatsapp-hover se existir. 
+       Na definição original: --color-whatsapp-hover: #20BD5A; */
+
+    background-color: var(--color-whatsapp-hover);
+    box-shadow: 0 20px 25px -5px rgba(37, 211, 102, 0.4), 0 8px 10px -6px rgba(37, 211, 102, 0.4);
+  }
+}
