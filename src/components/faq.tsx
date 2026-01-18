@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, X } from "lucide-react";
 import { useState } from "react";
+import { Container } from "./ui/container";
 
 const FAQS = [
     {
@@ -26,7 +27,7 @@ export function FAQ() {
 
     return (
         <section className="py-24 bg-[#F8FAFC]">
-            <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-24">
+            <Container className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-24">
 
                 {/* Left: Header & CTA */}
                 <div className="lg:col-span-1">
@@ -34,7 +35,7 @@ export function FAQ() {
                         <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
                         <span className="text-xs font-bold text-slate-700 uppercase tracking-wide">FAQ</span>
                     </div>
-                    <h2 className="text-4xl font-bold text-brand-blue mb-6">
+                    <h2 className="text-4xl font-bold text-[var(--color-brand-blue)] mb-6">
                         Dúvidas <br /> Frequentes
                     </h2>
                     <p className="text-slate-500 mb-8">
@@ -47,7 +48,7 @@ export function FAQ() {
                                 <img key={i} src={`https://source.unsplash.com/random/100x100?face&sig=${i + 10}`} className="w-10 h-10 rounded-full border-2 border-white" />
                             ))}
                         </div>
-                        <h4 className="font-bold text-brand-blue mb-1">Ainda tem dúvidas?</h4>
+                        <h4 className="font-bold text-[var(--color-brand-blue)] mb-1">Ainda tem dúvidas?</h4>
                         <p className="text-sm text-slate-500 mb-4">Fale com a gente no WhatsApp.</p>
                         <button className="w-full py-3 bg-brand-blue text-white rounded-xl font-bold text-sm hover:bg-slate-700 transition-colors">
                             Falar com Suporte
@@ -66,7 +67,7 @@ export function FAQ() {
                                 onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
                                 className="w-full flex items-center justify-between p-6 text-left"
                             >
-                                <span className="font-bold text-lg text-brand-blue">{faq.question}</span>
+                                <span className="font-bold text-lg text-[var(--color-brand-blue)]">{faq.question}</span>
                                 <div className={`p-1 rounded-full border transition-colors ${openIndex === idx ? "bg-brand-blue border-brand-blue text-white" : "border-slate-200 text-slate-400"}`}>
                                     {openIndex === idx ? <X className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
                                 </div>
@@ -89,7 +90,7 @@ export function FAQ() {
                     ))}
                 </div>
 
-            </div>
+            </Container>
         </section>
     );
 }

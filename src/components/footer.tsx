@@ -1,17 +1,18 @@
 import { Facebook, Instagram, Linkedin } from "lucide-react";
+import { Container } from "./ui/container";
 
 
 export function Footer() {
     return (
         <footer className="relative bg-slate-950 text-white pt-24 pb-12 mt-48 md:mt-32">
             {/* OVERLAPPING CTA CARD */}
-            <div className="absolute -top-24 left-0 right-0 px-6">
+            <Container className="absolute -top-24 left-0 right-0 z-10">
                 <div className="max-w-5xl mx-auto bg-brand-yellow rounded-3xl p-8 md:p-12 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left relative overflow-hidden">
                     {/* Decor */}
                     <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
                     <div className="relative z-10 max-w-xl">
-                        <h2 className="text-3xl md:text-4xl font-bold text-brand-blue mb-2">
+                        <h2 className="text-3xl md:text-4xl font-bold text-[var(--color-brand-blue)] mb-2">
                             Leve seu inglês para o próximo nível.
                         </h2>
                         <p className="text-slate-800 font-medium text-lg">
@@ -25,9 +26,9 @@ export function Footer() {
                         Chamar no WhatsApp
                     </button>
                 </div>
-            </div>
+            </Container>
 
-            <div className="max-w-7xl mx-auto px-6 mt-16">
+            <Container className="mt-16">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-slate-800 pb-12">
 
                     {/* Column 1: Brand */}
@@ -58,7 +59,7 @@ export function Footer() {
                         <ul className="space-y-4">
                             {["Início", "Sobre Mim", "Metodologia", "Depoimentos", "Blog"].map(item => (
                                 <li key={item}>
-                                    <a href="#" className="text-slate-400 hover:text-brand-yellow transition-colors text-sm">
+                                    <a href="#" className="text-slate-400 hover:text-[var(--color-brand-yellow)] transition-colors text-sm">
                                         {item}
                                     </a>
                                 </li>
@@ -72,7 +73,7 @@ export function Footer() {
                         <ul className="space-y-4">
                             {["Aulas Particulares", "Mentoria B2B", "Tradução Técnica", "Preparatório TOEFL", "Inglês para Viagem"].map(item => (
                                 <li key={item}>
-                                    <a href="#" className="text-slate-400 hover:text-brand-yellow transition-colors text-sm">
+                                    <a href="#" className="text-slate-400 hover:text-[var(--color-brand-yellow)] transition-colors text-sm">
                                         {item}
                                     </a>
                                 </li>
@@ -98,7 +99,7 @@ export function Footer() {
                         <a href="#" className="hover:text-white transition-colors">Termos de Uso</a>
                     </div>
                 </div>
-            </div>
+            </Container>
         </footer>
     );
 }

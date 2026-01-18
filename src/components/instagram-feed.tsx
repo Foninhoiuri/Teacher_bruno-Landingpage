@@ -3,6 +3,7 @@
 import { useRef, useEffect, useState } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
 import { Instagram, CheckCircle2 } from "lucide-react";
+import { Container } from "./ui/container";
 
 // ============================================================================
 // 1. CONFIGURAÇÕES E DADOS PADRÃO (FALLBACK)
@@ -80,7 +81,7 @@ function InstaCard({ post }: { post: any }) {
             target="_blank"
             rel="noopener noreferrer"
             ref={containerRef}
-            className="relative flex-shrink-0 w-64 md:w-72 aspect-[9/16] rounded-3xl overflow-hidden group bg-black border border-slate-100 shadow-md cursor-pointer mr-6"
+            className="relative flex-shrink-0 w-64 md:w-72 aspect-[9/16] rounded-3xl overflow-hidden group bg-black border border-slate-100 shadow-md cursor-pointer mr-8"
         >
             <video
                 ref={videoRef}
@@ -94,7 +95,7 @@ function InstaCard({ post }: { post: any }) {
 
             {/* Overlay Escuro + Botão (Só aparece ao passar o mouse) */}
             <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-20">
-                <div className="px-6 py-3 rounded-full text-xs font-bold flex items-center gap-2 transform scale-90 group-hover:scale-100 btn-brand-yellow-effect">
+                <div className="px-6 py-3 rounded-full text-xs font-bold flex items-center gap-2 transform scale-90 text-[var(--color-brand-blue)] border border-transparent group-hover:scale-100 btn-yellow hover:text-[var(--color-brand-white)]">
                     <Instagram className="w-6 h-6" />
                     Ver no Instagram
                 </div>
@@ -122,7 +123,7 @@ export function InstagramFeed() {
                 x: "-50%", // Move metade do tamanho total (já que duplicamos a lista)
                 transition: {
                     ease: "linear",
-                    duration: 60, // Diminuí para 60s para testar (120s pode parecer parado)
+                    duration: 80, // Diminuí para 60s para testar (120s pode parecer parado)
                     repeat: Infinity
                 }
             });
@@ -181,11 +182,11 @@ export function InstagramFeed() {
             </div>
 
             {/* --- PARTE 2: O HEADER DO PERFIL (Efeito Vidro) --- */}
-            <div className="max-w-7xl mx-auto px-6 relative z-20 -mt-16">
+            <Container className="rounded-full relative z-20 -mt-16">
                 {profile ? (
                     // Card com efeito Glassmorphism (Vidro)
-                    <div className="bg-white/55 backdrop-blur-xl p-4 md:p-6 rounded-[2.5rem] shadow-xl shadow-slate-200/50 border border-white/35 max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-700">
-                        <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
+                    <div className="bg-white/55 backdrop-blur-xl p-4 md:p-6 rounded-[2.5rem] md:rounded-full shadow-xl shadow-slate-200/50 border border-white/35 max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-700">
+                        <div className="flex flex-col md:flex-row items-center h-auto md:h-[60px] justify-between gap-6 md:gap-8">
 
                             {/* Bloco 1: Foto e Nome */}
                             <div className="flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
@@ -206,7 +207,7 @@ export function InstagramFeed() {
                                 </a>
                                 <div>
                                     {/* Nome em Destaque (Bold) */}
-                                    <h3 className="text-xl font-bold text-brand-blue flex items-center justify-center md:justify-start gap-1">
+                                    <h3 className="text-xl font-bold text-[var(--color-brand-blue)] flex items-center justify-center md:justify-start gap-1">
                                         {profile.name}
                                     </h3>
                                     {/* Username e Selo de Verificado logo abaixo */}
@@ -218,22 +219,22 @@ export function InstagramFeed() {
                             </div>
 
                             {/* Bloco 2: Divisor Vertical (Apenas Desktop) */}
-                            <div className="hidden md:block w-px h-12 bg-slate-400/20" />
+                            <div className="hidden md:block w-px h-16 bg-brand-blue/20" />
 
                             {/* Bloco 3: Estatísticas (Seguidores/Posts) */}
                             <div className="flex gap-8 text-center">
                                 <div>
-                                    <span className="block text-xl font-bold text-brand-blue">{profile.followers}</span>
+                                    <span className="block text-xl font-bold text-[var(--color-brand-blue)]">{profile.followers}</span>
                                     <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Seguidores</span>
                                 </div>
                                 <div>
-                                    <span className="block text-xl font-bold text-brand-blue">{profile.posts}</span>
+                                    <span className="block text-xl font-bold text-[var(--color-brand-blue)]">{profile.posts}</span>
                                     <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Posts</span>
                                 </div>
                             </div>
 
                             {/* Bloco 4: Botão de Ação */}
-                            <a href={profile.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3.5 font-bold rounded-full w-full md:w-auto justify-center btn-brand-yellow-effect">
+                            <a href={profile.link} target="_blank" rel="noopener noreferrer" className="flex items-center border border-transparent gap-2 px-6 py-3.5 font-bold rounded-full w-full md:text-[var(--color-brand-blue)] md:w-auto justify-center btn-yellow hover:text-[var(--color-brand-white)]">
                                 <Instagram className="w-4 h-4" />
                                 Seguir no Insta
                             </a>
@@ -243,7 +244,7 @@ export function InstagramFeed() {
                     // Skeleton Loading (Se ainda estiver carregando ou sem dados)
                     <div className="max-w-4xl mx-auto h-32 bg-white/20 backdrop-blur-md rounded-[2.5rem] animate-pulse" />
                 )}
-            </div>
+            </Container>
         </section>
     );
 }

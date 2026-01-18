@@ -1,15 +1,88 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { SITE_CONFIG } from "../config";
+import { Container } from "./ui/container";
+import { cn } from "../lib/utils";
+
+// --- CONFIGURAÇÃO DE POSIÇÃO DOS CARDS FLUTUANTES ---
+// Edite aqui para mudar a posição dos cards
+const FLOAT_CONFIG = {
+    conversation: {
+        mobile: "top-4 right-10",
+        desktop: "md:top-10 md:right-25",
+        transform: "scale-[0.75] md:scale-100 origin-top-right"
+    },
+    customized: {
+        mobile: "bottom-25 left-0",
+        desktop: "md:left-4",
+        transform: "scale-[0.75] md:scale-100 origin-bottom-left"
+    },
+    students: {
+        mobile: "top-65 -right-4",
+        desktop: "md:top-85 md:-right-2 md:-translate-y-1/2",
+        transform: "scale-[0.75] md:scale-100 origin-right"
+    }
+};
+
+interface FloatingCardProps {
+    className?: string;
+    delay?: number;
+    children: React.ReactNode;
+}
+
+function FloatingCard({ className, delay = 0, children }: FloatingCardProps) {
+    return (
+        <motion.div
+            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            animate={{
+                opacity: 1,
+                scale: 1,
+                y: [0.5, -10, 0] // Animação Yoyo (Nuvem)
+            }}
+            transition={{
+                delay: delay,
+                opacity: { duration: 0.5 },
+                scale: { duration: 0.5 },
+                y: {
+                    duration: 6, // Mais lento para parecer flutuar
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                }
+            }}
+            className={cn(
+                "absolute z-20 flex items-center gap-3 p-3 pr-5 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.12)]",
+                "bg-white/90 backdrop-blur-sm border border-white/20", // Efeito Vidro
+                className
+            )}
+        >
+            {children}
+        </motion.div>
+    );
+}
 
 export function Hero() {
+    const scrollToSection = (id: string) => {
+        const element = document.getElementById(id);
+        if (element) {
+            const headerOffset = 100;
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth"
+            });
+        }
+    };
+
     return (
-        <section className="relative w-full min-h-[600px] lg:min-h-[700px] flex items-center bg-slate-50 overflow-hidden py-4 lg:py-2">
+        <section className="relative w-full min-h-[600px] lg:min-h-[700px] flex items-center bg-slate-50 overflow-hidden py-4 md:py-20">
             {/* Background Decor (Geral) */}
             <div className="absolute top-0 right-0 w-[45%] h-full bg-white/50 rounded-l-[100px] -z-10 hidden lg:block backdrop-blur-3xl" />
 
-            <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center relative">
+            <Container className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center relative">
 
                 {/* Left Column: Text */}
                 <motion.div
@@ -25,8 +98,8 @@ export function Hero() {
                     </div>
 
                     {/* Titulo */}
-                    <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight text-brand-blue leading-[1.1]">
-                        Conecte-se com o <span className="text-brand-yellow">mundo</span> <br className="hidden lg:block" /> através das palavras.
+                    <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight text-[var(--color-brand-blue)] leading-[1.1]">
+                        Conecte-se com o <span className="text-[var(--color-brand-yellow)]">mundo</span> <br className="hidden lg:block" /> através das palavras.
                     </h1>
 
                     {/* SubTitulo */}
@@ -35,12 +108,19 @@ export function Hero() {
                     </p>
 
                     {/* Botões */}
-                    <div className="flex flex-col sm:flex-row gap-4 mt-2">
-                        <button className="flex items-center justify-center gap-2 px-8 py-4 bg-brand-yellow text-brand-blue font-bold text-md rounded-full hover:brightness-90 transition-all shadow-lg shadow-brand-yellow/20 hover:shadow-xl hover:-translate-y-0.5">
+                    <div className="flex flex-col sm:flex-row items-center gap-4 mt-2">
+                        <button
+                            onClick={() => scrollToSection('plans')}
+                            // Corrigido w-90% para w-[90%] (sintaxe correta do Tailwind)
+                            className="flex sm:w-auto items-center justify-center w-[80%] gap-2 px-8 py-4 font-bold text-md rounded-full btn-yellow-solid"
+                        >
                             Destravar meu Inglês
                             <ArrowRight className="w-5 h-5" />
                         </button>
-                        <button className="flex items-center justify-center gap-2 px-8 py-4 bg-white text-slate-600 font-bold text-md rounded-full border border-slate-200 hover:bg-slate-50 hover:text-brand-blue transition-all shadow-sm">
+                        <button
+                            onClick={() => scrollToSection('methodology')}
+                            className="flex items-center w-[80%] sm:w-auto justify-center gap-2 px-8 py-4 font-bold text-md rounded-full btn-clean shadow-sm"
+                        >
                             Conhecer Metodologia
                         </button>
                     </div>
@@ -72,65 +152,68 @@ export function Hero() {
                     </div>
 
                     {/* Floating Card 1 (Conversação) - Topo Direito */}
-                    <motion.div
-                        initial={{ y: -20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 0.5 }}
-                        // AJUSTE: scale-[0.75] no mobile, origin-top-right para encolher pro canto
-                        className="absolute top-4 right-0 md:top-10 md:right-15 bg-white p-3 pr-5 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.12)] flex items-center gap-3 z-20 scale-[0.75] md:scale-100 origin-top-right"
+                    <FloatingCard
+                        delay={0.5}
+                        className={cn(
+                            FLOAT_CONFIG.conversation.mobile,
+                            FLOAT_CONFIG.conversation.desktop,
+                            FLOAT_CONFIG.conversation.transform
+                        )}
                     >
                         <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="w-5 h-5" viewBox="0 0 16 16">
-                                <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232" />
-                            </svg>
+                            <CheckCircle2 className="w-6 h-6" />
                         </div>
                         <div>
                             <p className="font-bold text-slate-800 text-sm">Conversação</p>
                             <p className="text-[10px] text-slate-400 font-medium uppercase">Foco Prático</p>
                         </div>
-                    </motion.div>
+                    </FloatingCard>
 
                     {/* Floating Card 2 (Personalizado) - Base Esquerda */}
-                    <motion.div
-                        initial={{ y: 20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 0.7 }}
-                        // AJUSTE: scale-[0.75], colado no bottom-0 left-0 no mobile para não subir na foto
-                        className="absolute bottom-0 left-0 md:bottom-12 md:left-4 bg-white p-3 pr-5 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.12)] flex items-center gap-3 z-20 scale-[0.75] md:scale-100 origin-bottom-left"
+                    <FloatingCard
+                        delay={0.7}
+                        className={cn(
+                            FLOAT_CONFIG.customized.mobile,
+                            FLOAT_CONFIG.customized.desktop,
+                            FLOAT_CONFIG.customized.transform
+                        )}
                     >
-                        <div className="w-10 h-10 bg-brand-yellow/10 rounded-full flex items-center justify-center text-brand-yellow">
+                        <div className="w-10 h-10 bg-brand-yellow/10 rounded-full flex items-center justify-center text-[var(--color-brand-yellow)]">
                             <span className="font-bold text-sm">100%</span>
                         </div>
                         <div>
                             <p className="font-bold text-slate-800 text-sm">Personalizado</p>
                             <p className="text-[10px] text-slate-400 font-medium uppercase">Para você</p>
                         </div>
-                    </motion.div>
+                    </FloatingCard>
 
-                    {/* Floating Card 3 (Reviews) - Lateral Direita */}
-                    <motion.div
-                        initial={{ scale: 0.8, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        transition={{ delay: 0.9 }}
-                        // AJUSTE CRÍTICO: No mobile (padrão) vai para bottom-28 (embaixo da foto mas acima do card 2)
-                        // No desktop (md:) volta para o meio (top-1/2)
-                        className="absolute bottom-28 -right-4 md:bottom-auto md:top-1/2 md:-right-8 md:-translate-y-1/2 bg-white p-3 pr-5 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.12)] flex items-center gap-4 z-20 scale-[0.75] md:scale-100 origin-right"
+                    {/* Floating Card 3 (Reviews) - Lateral Direita*/}
+
+                    <FloatingCard
+                        delay={0.9}
+                        className={cn(
+                            FLOAT_CONFIG.students.mobile,
+                            FLOAT_CONFIG.students.desktop,
+                            FLOAT_CONFIG.students.transform,
+                            "-py-1"
+                        )}
                     >
                         <div className="flex -space-x-3">
                             {[1, 2, 3].map(i => (
                                 <img key={i} src={`https://randomuser.me/api/portraits/men/${i * 10}.jpg`} alt="Student" className="w-9 h-9 rounded-full border-2 border-white object-cover" />
                             ))}
                         </div>
-                        <div className="flex flex-col justify-center">
-                            <div className="flex gap-0.5 text-brand-yellow text-xs">
-                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        <div className="flex flex-col gap-1/2 -space-x-3 justify-center">
+                            <div className="flex gap-0.5 text-[var(--color-brand-yellow)] text-xs">
+                                {[1, 2, 3, 4, 5].map(star => (
+                                    <span key={star}>★</span>
+                                ))}
                             </div>
-                            <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wide">+500 Alunos</span>
+                            <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wide">{SITE_CONFIG.studentCount} Alunos</span>
                         </div>
-                    </motion.div>
-
+                    </FloatingCard>
                 </motion.div>
-            </div>
+            </Container>
         </section>
     );
 }

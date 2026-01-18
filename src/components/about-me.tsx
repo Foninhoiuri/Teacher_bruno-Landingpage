@@ -2,11 +2,12 @@
 
 import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
+import { Container } from "./ui/container";
 
 export function AboutMe() {
     return (
         <section className="relative w-full py-24 bg-white overflow-hidden" id="sobre">
-            <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <Container className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
                 {/* COLUNA 1: IMAGEM (Esquerda) */}
                 <motion.div
@@ -45,9 +46,9 @@ export function AboutMe() {
                     </div>
 
                     {/* Título */}
-                    <h2 className="text-4xl md:text-5xl font-bold text-brand-blue leading-tight">
+                    <h2 className="text-4xl md:text-5xl font-bold text-[var(--color-brand-blue)] leading-tight">
                         Muito prazer, <br />
-                        eu sou o <span className="text-brand-yellow">Teacher Bruno.</span>
+                        eu sou o <span className="text-[var(--color-brand-yellow)]">Teacher Bruno.</span>
                     </h2>
 
                     {/* Texto Corrido */}
@@ -58,7 +59,7 @@ export function AboutMe() {
                         <p>
                             Em 2018, ingressei na franquia de idiomas que mais cresce no país, <strong>KNN Idiomas</strong>. Fiquei surpreso com a eficiência do método da escola e me desenvolvi como jamais poderia imaginar nos quase três anos que passei tendo contato com pessoas incríveis e participando de treinamentos com especialistas da área.
                         </p>
-                        <p className="font-medium text-brand-blue">
+                        <p className="font-medium text-[var(--color-brand-blue)]">
                             Agora trabalhando exclusivamente pra mim, trago para meus alunos o melhor de todos os métodos que já conheci, eliminando intermediários desnecessários e entendendo a dificuldade e necessidade exclusiva de cada aluno, respeitando as diferenças e extraindo toda a capacidade de cada um daqueles que me escolhem como treinador, teacher ou amigo pessoal!
                         </p>
                     </div>
@@ -67,13 +68,13 @@ export function AboutMe() {
                     <div className="flex flex-col sm:flex-row gap-6 mt-4">
                         <div className="flex items-center gap-2">
                             <div className="bg-brand-yellow/10 p-1 rounded-full">
-                                <CheckCircle2 className="w-5 h-5 text-brand-yellow" />
+                                <CheckCircle2 className="w-5 h-5 text-[var(--color-brand-yellow)]" />
                             </div>
                             <span className="text-sm font-bold text-slate-700">Experiência Real</span>
                         </div>
                         <div className="flex items-center gap-2">
                             <div className="bg-brand-yellow/10 p-1 rounded-full">
-                                <CheckCircle2 className="w-5 h-5 text-brand-yellow" />
+                                <CheckCircle2 className="w-5 h-5 text-[var(--color-brand-yellow)]" />
                             </div>
                             <span className="text-sm font-bold text-slate-700">Método Exclusivo</span>
                         </div>
@@ -81,7 +82,7 @@ export function AboutMe() {
 
                 </motion.div>
 
-            </div>
+            </Container>
         </section>
     );
 }

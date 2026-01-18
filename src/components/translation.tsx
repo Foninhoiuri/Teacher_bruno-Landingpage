@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
 import { CheckCircle2, Globe2 } from "lucide-react";
+import { Container } from "./ui/container";
 
 export function Translation() {
     return (
         <section className="py-24 bg-white overflow-hidden" id="traducao">
-            <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <Container className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
                 {/* Image Composition */}
                 <motion.div
@@ -37,11 +38,11 @@ export function Translation() {
                 {/* Content */}
                 <div className="flex flex-col gap-6 order-1 lg:order-2">
                     <div className="inline-flex items-center gap-2 px-3 py-1 bg-slate-50 border border-slate-100 rounded-full w-fit">
-                        <Globe2 className="w-4 h-4 text-brand-yellow" />
+                        <Globe2 className="w-4 h-4 text-[var(--color-brand-yellow)]" />
                         <span className="text-xs font-bold text-slate-700 uppercase tracking-wide">Para Empresas</span>
                     </div>
 
-                    <h2 className="text-4xl md:text-5xl font-bold text-brand-blue leading-tight">
+                    <h2 className="text-4xl md:text-5xl font-bold text-[var(--color-brand-blue)] leading-tight">
                         Tradução Profissional <br /> & Consultoria.
                     </h2>
 
@@ -59,7 +60,7 @@ export function Translation() {
                             "Localização de Software"
                         ].map((item, i) => (
                             <div key={i} className="flex items-center gap-3 p-3 bg-slate-50 rounded-xl border border-slate-100/50 hover:bg-white hover:shadow-sm hover:border-slate-200 transition-all">
-                                <CheckCircle2 className="w-5 h-5 text-brand-yellow flex-shrink-0" />
+                                <CheckCircle2 className="w-5 h-5 text-[var(--color-brand-yellow)] flex-shrink-0" />
                                 <span className="text-slate-700 font-medium text-sm">{item}</span>
                             </div>
                         ))}
@@ -72,7 +73,7 @@ export function Translation() {
                     </div>
                 </div>
 
-            </div>
+            </Container>
         </section>
     );
 }

@@ -1,10 +1,10 @@
 import { Navbar } from "./components/navbar";
 import { Hero } from "./components/hero";
-import { Challenges } from "./components/challenges"; // Renamed from PainPoints
+
 import { Plans } from "./components/plans"; // Renamed from Services
 import { BusinessEnglish } from "./components/business-english"; // Renamed from BusinessSkills
 import { GlobalReach } from "./components/global-reach"; // Renamed from GlobalMap
-import { Testimonials } from "./components/testimonials"; // Renamed from SocialProof
+
 import { Footer } from "./components/footer";
 import { FAQ } from "./components/faq";
 import { AboutMe } from "./components/about-me";
@@ -27,11 +27,9 @@ function App() {
           <AboutMe />
         </section>
 
-        
 
-        <section id="challenges">
-          <Challenges />
-        </section>
+
+
 
         <section id="methodology">
           <Methodology />
@@ -43,9 +41,7 @@ function App() {
 
         <GlobalReach />
 
-        <section id="testimonials">
-          <Testimonials />
-        </section>
+
 
         <section id="plans">
           <Plans />

@@ -1,17 +1,18 @@
 import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
+import { Container } from "./ui/container";
 
 export function BusinessEnglish() {
     return (
         <section className="py-24 bg-white overflow-hidden">
-            <div className="max-w-7xl mx-auto px-6 flex flex-col gap-32">
+            <Container className="flex flex-col gap-32">
 
                 {/* PART 1: Ferramentas para o Sucesso - Masonry Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     <div className="flex flex-col gap-6 order-2 lg:order-1">
-                        <span className="text-brand-yellow font-bold tracking-wider uppercase text-sm">Carreira & Negócios</span>
-                        <h2 className="text-4xl md:text-5xl font-bold text-brand-blue leading-tight">
-                            Ferramentas para o <span className="text-brand-yellow">Sucesso</span> Profissional.
+                        <span className="text-[var(--color-brand-yellow)] font-bold tracking-wider uppercase text-sm">Carreira & Negócios</span>
+                        <h2 className="text-4xl md:text-5xl font-bold text-[var(--color-brand-blue)] leading-tight">
+                            Ferramentas para o <span className="text-[var(--color-brand-yellow)]">Sucesso</span> Profissional.
                         </h2>
                         <p className="text-slate-600 text-lg">
                             Não basta saber a gramática. É preciso dominar a linguagem corporativa, reuniões, apresentações e negociações internacionais.
@@ -19,7 +20,7 @@ export function BusinessEnglish() {
                         <div className="flex flex-col gap-4 mt-2">
                             {["Inglês para Reuniões", "Apresentações de Impacto", "Vocabulário Técnico", "Simulações de Entrevista"].map((item, i) => (
                                 <div key={i} className="flex items-center gap-3">
-                                    <CheckCircle2 className="w-6 h-6 text-brand-yellow flex-shrink-0" />
+                                    <CheckCircle2 className="w-6 h-6 text-[var(--color-brand-yellow)] flex-shrink-0" />
                                     <span className="text-slate-700 font-medium">{item}</span>
                                 </div>
                             ))}
@@ -68,7 +69,7 @@ export function BusinessEnglish() {
                 </div>
 
                 {/* PART 1 CONTENT ENDS ABOVE */}
-            </div>
+            </Container>
         </section>
     );
 }
