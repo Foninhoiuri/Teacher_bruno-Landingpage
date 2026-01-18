@@ -3,7 +3,7 @@ import { Hero } from "./components/hero";
 
 import { Plans } from "./components/plans"; // Renamed from Services
 import { BusinessEnglish } from "./components/business-english"; // Renamed from BusinessSkills
-import { Testimonials } from "./components/testimonials"; // Renamed from GlobalMap
+import { Testimonials } from "./components/Testimonials"; // Renamed from GlobalMap
 
 import { Footer } from "./components/footer";
 import { FAQ } from "./components/faq";
@@ -36,9 +36,9 @@ function App() {
         </section>
 
         <section id="testimonials">
-        <Testimonials />
+          <Testimonials />
         </section>
-        
+
         <section id="plans">
           <Plans />
         </section>
