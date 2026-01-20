@@ -89,7 +89,7 @@ export function Navbar() {
                 <Container className="h-20 flex items-center justify-between">
                     <div className="flex items-center gap-6 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
                         <div className="flex items-center gap-3">
-                            <img src="/logo.png" alt="Teacher Bruno Logo" className="w-auto h-12" />
+                            <img src="/logo.webp" alt="Teacher Bruno Logo" className="w-auto h-12" />
                             <div className="flex flex-col">
                                 <span className="text-lg font-extrabold tracking-tight text-[var(--color-brand-yellow)] leading-none">Teacher Bruno</span>
                                 <span className="text-lg font-bold text-slate-400 leading-none">Fernandes</span>
@@ -143,7 +143,7 @@ export function Navbar() {
             {/* MOBILE HEADER */}
             <div className="lg:hidden fixed top-0 left-0 right-0 z-30 bg-white/70 backdrop-blur-xl border-b border-white/50 h-16 flex items-center px-6 justify-between shadow-sm">
                 <div className="flex items-center gap-2">
-                    <img src="/logo.png" alt="Teacher Bruno Logo" className="w-auto h-8" />
+                    <img src="/logo.webp" alt="Teacher Bruno Logo" className="w-auto h-8" />
                     <span className="text-lg font-extrabold text-[var(--color-brand-yellow)]">Teacher Bruno</span>
                 </div>
                 <button onClick={toggleLang} className="flex items-center gap-1.5 px-2 py-1 bg-slate-50 rounded-full border border-slate-200">

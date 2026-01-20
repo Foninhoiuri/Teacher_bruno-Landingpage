@@ -1,16 +1,18 @@
+import { Suspense, lazy } from "react";
 import { Navbar } from "./components/navbar";
 import { Hero } from "./components/hero";
-
-import { Plans } from "./components/plans"; // Renamed from Services
-import { BusinessEnglish } from "./components/business-english"; // Renamed from BusinessSkills
-import { Testimonials } from "./components/Testimonials"; // Renamed from GlobalMap
-
 import { Footer } from "./components/footer";
-import { FAQ } from "./components/faq";
-import { AboutMe } from "./components/about-me";
-import { InstagramFeed } from "./components/instagram-feed";
-import { Methodology } from "./components/methodology";
-import { Translation } from "./components/translation";
+import { SectionSkeleton } from "./components/ui/section-skeleton";
+
+// Lazy Load Heavy Components (Handling Named Exports)
+const Plans = lazy(() => import("./components/plans").then(module => ({ default: module.Plans })));
+const BusinessEnglish = lazy(() => import("./components/business-english").then(module => ({ default: module.BusinessEnglish })));
+const Testimonials = lazy(() => import("./components/Testimonials").then(module => ({ default: module.Testimonials })));
+const FAQ = lazy(() => import("./components/faq").then(module => ({ default: module.FAQ })));
+const AboutMe = lazy(() => import("./components/about-me").then(module => ({ default: module.AboutMe })));
+const InstagramFeed = lazy(() => import("./components/instagram-feed").then(module => ({ default: module.InstagramFeed })));
+const Methodology = lazy(() => import("./components/methodology").then(module => ({ default: module.Methodology })));
+const Translation = lazy(() => import("./components/translation").then(module => ({ default: module.Translation })));
 
 function App() {
   return (
@@ -21,34 +23,50 @@ function App() {
           <Hero />
         </section>
 
-        <InstagramFeed />
+        <Suspense fallback={<SectionSkeleton />}>
+          <InstagramFeed />
+        </Suspense>
 
         <section id="about">
-          <AboutMe />
+          <Suspense fallback={<SectionSkeleton />}>
+            <AboutMe />
+          </Suspense>
         </section>
 
         <section id="methodology">
-          <Methodology />
+          <Suspense fallback={<SectionSkeleton />}>
+            <Methodology />
+          </Suspense>
         </section>
 
         <section id="business">
-          <BusinessEnglish />
+          <Suspense fallback={<SectionSkeleton />}>
+            <BusinessEnglish />
+          </Suspense>
         </section>
 
         <section id="testimonials">
-          <Testimonials />
+          <Suspense fallback={<SectionSkeleton />}>
+            <Testimonials />
+          </Suspense>
         </section>
 
         <section id="plans">
-          <Plans />
+          <Suspense fallback={<SectionSkeleton />}>
+            <Plans />
+          </Suspense>
         </section>
 
         <section id="translation">
-          <Translation />
+          <Suspense fallback={<SectionSkeleton />}>
+            <Translation />
+          </Suspense>
         </section>
 
         <section id="faq">
-          <FAQ />
+          <Suspense fallback={<SectionSkeleton />}>
+            <FAQ />
+          </Suspense>
         </section>
       </main>
       <Footer />

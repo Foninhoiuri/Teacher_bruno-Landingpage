@@ -145,7 +145,7 @@ export function Hero() {
                     {/* Main Image */}
                     <div className="relative z-10">
                         <img
-                            src="/Hero_image.png"
+                            src="/Hero_image.webp"
                             alt="Teacher Bruno Teaching"
                             width={600}
                             height={600}

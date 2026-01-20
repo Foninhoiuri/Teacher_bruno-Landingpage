@@ -20,7 +20,7 @@ export function AboutMe() {
                         className="relative w-full h-[300px] md:h-[400px] lg:absolute lg:inset-y-0 lg:h-full lg:w-[48%] z-0 rounded-2xl overflow-hidden shadow-lg lg:shadow-none mb-8 lg:mb-0"
                     >
                         <img
-                            src="/AboutMe.png"
+                            src="/AboutMe.webp"
                             alt="Teacher Bruno Fernandes"
                             className="w-full h-full object-cover object-top lg:object-center"
                         />

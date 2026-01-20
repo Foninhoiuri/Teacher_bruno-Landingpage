@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Optimizer</title>
+</head>
+<body>
+    <h1>WebP Converter</h1>
+    <input type="file" id="upload" multiple>
+    <div id="status">Waiting for files...</div>
+    <div id="output"></div>
+
+    <script>
+        document.getElementById('upload').addEventListener('change', async (e) => {
+            const files = e.target.files;
+            const output = document.getElementById('output');
+            const status = document.getElementById('status');
+            
+            status.textContent = `Processing ${files.length} files...`;
+            
+            for (let file of files) {
+                if (!file.type.startsWith('image/')) continue;
+                
+                const img = new Image();
+                img.src = URL.createObjectURL(file);
+                await new Promise(r => img.onload = r);
+                
+                const canvas = document.createElement('canvas');
+                // Resize if too huge (max 1920px width)
+                let width = img.width;
+                let height = img.height;
+                const MAX_WIDTH = 1200; // Optimized for Hero
+                
+                if (width > MAX_WIDTH) {
+                    height = Math.round((height * MAX_WIDTH) / width);
+                    width = MAX_WIDTH;
+                }
+                
+                canvas.width = width;
+                canvas.height = height;
+                
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0, width, height);
+                
+                // Convert to WebP
+                canvas.toBlob((blob) => {
+                    const url = URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.href = url;
+                    // Keep original name but change extension
+                    const newName = file.name.replace(/\.[^/.]+$/, "") + ".webp";
+                    link.download = newName;
+                    link.textContent = `Download ${newName} (${Math.round(blob.size/1024)}KB)`;
+                    link.style.display = 'block';
+                    output.appendChild(link);
+                    
+                    // Auto-click to download (for agent automation)
+                    link.click();
+                }, 'image/webp', 0.85); // 85% quality
+            }
+            status.textContent = 'Done!';
+        });
+    </script>
+</body>
+</html>

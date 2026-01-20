@@ -16,7 +16,7 @@ const WEBHOOK_PROFILE = "https://n8n.igoriurialves.com.br/webhook/instagram-prof
 const FALLBACK_PROFILE = {
     username: "@teacher.brunofernandes",
     name: "Teacher Bruno Fernandes",
-    img: "/AboutMe.png", // Certifique-se que essa imagem existe na pasta public
+    img: "/AboutMe.webp", // Certifique-se que essa imagem existe na pasta public
     followers: "1.580",
     posts: "340",
     link: "https://www.instagram.com/teacher.brunofernandes/"
